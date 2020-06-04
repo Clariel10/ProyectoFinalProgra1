@@ -17,15 +17,13 @@ namespace VENTAS.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Producto()
         {
-            this.Creditos_Fiscales = new HashSet<Creditos_Fiscales>();
-            this.facturas = new HashSet<factura>();
-            this.Facturas_Compras = new HashSet<Facturas_Compras>();
-            this.Tickets = new HashSet<Ticket>();
+            this.Detalle_Compra = new HashSet<Detalle_Compra>();
+            this.Detalle_Venta = new HashSet<Detalle_Venta>();
         }
     
         public int id_producto { get; set; }
-        public Nullable<int> id_categoria { get; set; }
-        public Nullable<int> id_proveedor { get; set; }
+        public int id_categoria { get; set; }
+        public int id_proveedor { get; set; }
         public string nombre_producto { get; set; }
         public Nullable<int> cantidad { get; set; }
         public Nullable<decimal> costo { get; set; }
@@ -33,13 +31,9 @@ namespace VENTAS.Model
     
         public virtual Categoria Categoria { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Creditos_Fiscales> Creditos_Fiscales { get; set; }
+        public virtual ICollection<Detalle_Compra> Detalle_Compra { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<factura> facturas { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Facturas_Compras> Facturas_Compras { get; set; }
+        public virtual ICollection<Detalle_Venta> Detalle_Venta { get; set; }
         public virtual Proveedore Proveedore { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Ticket> Tickets { get; set; }
     }
 }

@@ -17,8 +17,7 @@ namespace VENTAS.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Cliente()
         {
-            this.Creditos_Fiscales = new HashSet<Creditos_Fiscales>();
-            this.facturas = new HashSet<factura>();
+            this.Ventas = new HashSet<Venta>();
         }
     
         public int id_cliente { get; set; }
@@ -29,11 +28,8 @@ namespace VENTAS.Model
         public string dui { get; set; }
         public string nit { get; set; }
         public string nrc { get; set; }
-        public string giro { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Creditos_Fiscales> Creditos_Fiscales { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<factura> facturas { get; set; }
+        public virtual ICollection<Venta> Ventas { get; set; }
     }
 }

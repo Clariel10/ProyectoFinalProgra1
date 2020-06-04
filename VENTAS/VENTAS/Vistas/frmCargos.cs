@@ -21,6 +21,28 @@ namespace VENTAS.Vistas
             
         }
 
+       void filtro()
+        {
+
+            using (VENTASEntities bd = new VENTASEntities())
+            {
+                string nombre = txtBuscar.Text;
+                var lista = from c in bd.Cargos
+                            where c.nombre_cargo.Contains(nombre)
+
+                            select new
+                            {
+                                NUMERO_CARGO = c.id_cargo,
+                                NOMBRE = c.nombre_cargo
+
+                            };
+
+                dgvCargo.DataSource = lista.ToList();
+
+
+            }
+        }
+
         void bloqueo()
         {
             txtNombre.Enabled = false;
@@ -57,22 +79,7 @@ namespace VENTAS.Vistas
 
         private void frmCargos_Load(object sender, EventArgs e)
         {
-            
-            using (VENTASEntities bd = new VENTASEntities())
-            {
-                var lista = from c in bd.Cargos
-
-                            select new
-                            {
-                                NUMERO_CARGO = c.id_cargo,
-                                NOMBRE = c.nombre_cargo
-
-                            };
-
-                dgvCargo.DataSource = lista.ToList();
-
-
-            }
+            filtro();
         }
 
         private void dgvCargo_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -208,6 +215,11 @@ namespace VENTAS.Vistas
         {
             Validacion val = new Validacion();
             val.soloLetras(e);
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            filtro();
         }
     }
 }

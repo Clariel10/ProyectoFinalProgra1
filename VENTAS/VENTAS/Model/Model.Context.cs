@@ -28,12 +28,13 @@ namespace VENTAS.Model
         public virtual DbSet<Cargo> Cargos { get; set; }
         public virtual DbSet<Categoria> Categorias { get; set; }
         public virtual DbSet<Cliente> Clientes { get; set; }
-        public virtual DbSet<Creditos_Fiscales> Creditos_Fiscales { get; set; }
+        public virtual DbSet<Compra> Compras { get; set; }
+        public virtual DbSet<Detalle_Compra> Detalle_Compra { get; set; }
+        public virtual DbSet<Detalle_Venta> Detalle_Venta { get; set; }
         public virtual DbSet<Empleado> Empleados { get; set; }
-        public virtual DbSet<factura> facturas { get; set; }
-        public virtual DbSet<Facturas_Compras> Facturas_Compras { get; set; }
         public virtual DbSet<Producto> Productos { get; set; }
         public virtual DbSet<Proveedore> Proveedores { get; set; }
-        public virtual DbSet<Ticket> Tickets { get; set; }
+        public virtual DbSet<Tipo_Documentos> Tipo_Documentos { get; set; }
+        public virtual DbSet<Venta> Ventas { get; set; }
     }
 }

@@ -23,6 +23,25 @@ namespace VENTAS.Vistas
             bloqueo();
         }
 
+        void filtro()
+        {
+
+            using (VENTASEntities bd = new VENTASEntities())
+            {
+                string nombre = txtBuscar.Text;
+                var lista = from pro in bd.Proveedores
+                            where pro.nombre_proveedor.Contains(nombre)
+
+                            select new
+                            {
+                                NUMERO_PROVEEDOR = pro.id_proveedor,
+                                NOMBRE = pro.nombre_proveedor,
+                            };
+
+                dgvProveedores.DataSource = lista.ToList();
+            }
+        }
+
         void limpiar()
         {
             txtDireccion.Text = "";
@@ -61,18 +80,7 @@ namespace VENTAS.Vistas
 
         private void frmProveedores_Load(object sender, EventArgs e)
         {
-            using (VENTASEntities bd = new VENTASEntities ())
-            {
-                var lista = from pro in bd.Proveedores
-
-                            select new
-                            {
-                                NUMERO_PROVEEDOR = pro.id_proveedor,
-                                NOMBRE = pro.nombre_proveedor,
-                            };
-
-                dgvProveedores.DataSource = lista.ToList();
-            }
+            filtro();
         }
 
         private void rbNuevo_CheckedChanged(object sender, EventArgs e)
@@ -208,6 +216,11 @@ namespace VENTAS.Vistas
         {
             Validacion val = new Validacion();
             val.soloLetras(e);
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            filtro();
         }
     }
 }

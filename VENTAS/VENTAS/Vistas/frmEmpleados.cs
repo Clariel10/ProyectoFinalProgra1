@@ -20,7 +20,29 @@ namespace VENTAS.Vistas
             bloqueo();
         }
 
-        
+        void filtro()
+        {
+
+            using (VENTASEntities bd = new VENTASEntities())
+            {
+                string nombre = txtBuscar.Text;
+                var lista = from m in bd.Empleados
+                            where m.nombre_empleado.Contains(nombre)
+
+                            select new
+                            {
+                                NUMERO_EMPLEADO = m.id_empleado,
+                                NOMBRE = m.nombre_empleado,
+                                APELLIDO = m.apellido_empleado,
+
+
+                            };
+
+                dgvEmpleados.DataSource = lista.ToList();
+
+
+            }
+        }
 
         void listaCargos()
         {
@@ -90,25 +112,7 @@ namespace VENTAS.Vistas
 
         private void frmEmpleados_Load(object sender, EventArgs e)
         {
-            
-            using (VENTASEntities bd = new VENTASEntities())
-            {
-
-                var lista = from m in bd.Empleados
-
-                            select new
-                            {
-                                NUMERO_EMPLEADO = m.id_empleado,
-                                NOMBRE = m.nombre_empleado,
-                                APELLIDO = m.apellido_empleado,
-                                
-                                
-                            };
-
-                dgvEmpleados.DataSource = lista.ToList();
-
-
-            }
+            filtro();
 
         }
 
@@ -331,6 +335,11 @@ namespace VENTAS.Vistas
         {
             
          
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            filtro();
         }
     }
 }

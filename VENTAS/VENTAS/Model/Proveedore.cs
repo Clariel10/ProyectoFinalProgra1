@@ -17,7 +17,7 @@ namespace VENTAS.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Proveedore()
         {
-            this.Facturas_Compras = new HashSet<Facturas_Compras>();
+            this.Detalle_Compra = new HashSet<Detalle_Compra>();
             this.Productos = new HashSet<Producto>();
         }
     
@@ -27,7 +27,7 @@ namespace VENTAS.Model
         public string telefono { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Facturas_Compras> Facturas_Compras { get; set; }
+        public virtual ICollection<Detalle_Compra> Detalle_Compra { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Producto> Productos { get; set; }
     }

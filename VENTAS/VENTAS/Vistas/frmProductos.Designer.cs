@@ -82,6 +82,7 @@
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(319, 27);
             this.txtBuscar.TabIndex = 2;
+            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             this.txtBuscar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscar_KeyPress);
             // 
             // label1
@@ -261,6 +262,7 @@
             this.txtCosto.Size = new System.Drawing.Size(174, 27);
             this.txtCosto.TabIndex = 3;
             this.txtCosto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCosto_KeyPress);
+            this.txtCosto.Leave += new System.EventHandler(this.txtCosto_Leave);
             // 
             // label3
             // 
@@ -295,6 +297,7 @@
             // 
             // txtVenta
             // 
+            this.txtVenta.Enabled = false;
             this.txtVenta.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtVenta.Location = new System.Drawing.Point(686, 281);
             this.txtVenta.Name = "txtVenta";

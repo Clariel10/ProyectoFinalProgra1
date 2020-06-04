@@ -14,13 +14,24 @@ namespace VENTAS.Model
     
     public partial class Empleado
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Empleado()
+        {
+            this.Compras = new HashSet<Compra>();
+            this.Ventas = new HashSet<Venta>();
+        }
+    
         public int id_empleado { get; set; }
-        public Nullable<int> id_cargo { get; set; }
+        public int id_cargo { get; set; }
         public string nombre_empleado { get; set; }
         public string apellido_empleado { get; set; }
         public string usuario { get; set; }
         public string contrasenia { get; set; }
     
         public virtual Cargo Cargo { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Compra> Compras { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Venta> Ventas { get; set; }
     }
 }

@@ -18,13 +18,15 @@ namespace VENTAS.Vistas
             InitializeComponent();
         }
 
-        private void frmVerEmpleados_Load(object sender, EventArgs e)
+        void filtro()
         {
             using (VENTASEntities bd = new VENTASEntities())
             {
+                string nombre = txtBuscar.Text;
                 var lista = from em in bd.Empleados
                             from ca in bd.Cargos
                             where em.id_cargo == ca.id_cargo
+                            where em.nombre_empleado.Contains(nombre)
 
                             select new
                             {
@@ -40,6 +42,11 @@ namespace VENTAS.Vistas
             }
         }
 
+        private void frmVerEmpleados_Load(object sender, EventArgs e)
+        {
+            filtro();
+        }
+
         private void frmVerEmpleados_KeyPress(object sender, KeyPressEventArgs e)
         {
            
@@ -49,6 +56,11 @@ namespace VENTAS.Vistas
         {
             Validacion val = new Validacion();
             val.soloLetras(e);
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            filtro();
         }
     }
 }

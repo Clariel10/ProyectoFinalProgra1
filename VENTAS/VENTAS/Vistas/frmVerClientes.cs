@@ -18,11 +18,13 @@ namespace VENTAS.Vistas
             InitializeComponent();
         }
 
-        private void frmVerClientes_Load(object sender, EventArgs e)
+        void filtro()
         {
-            using (VENTASEntities bd = new VENTASEntities ())
+            using (VENTASEntities bd = new VENTASEntities())
             {
+                string nombre = txtBuscar.Text;
                 var lista = from cli in bd.Clientes
+                            where cli.nombre_cliente.Contains(nombre)
 
                             select new
                             {
@@ -32,9 +34,8 @@ namespace VENTAS.Vistas
                                 TELEFONO = cli.telefono,
                                 DUI = cli.dui,
                                 NIT = cli.nit,
-                                GIRO = cli.giro,
                                 NRC = cli.nrc
-                              
+
 
                             };
 
@@ -42,10 +43,20 @@ namespace VENTAS.Vistas
             }
         }
 
+        private void frmVerClientes_Load(object sender, EventArgs e)
+        {
+            filtro();
+        }
+
         private void txtBuscar_KeyPress(object sender, KeyPressEventArgs e)
         {
             Validacion val = new Validacion();
             val.soloLetras(e);
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            filtro();
         }
     }
 }

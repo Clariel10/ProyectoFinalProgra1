@@ -24,6 +24,10 @@ namespace VENTAS
                 {
                     e.Handled = false;
                 }
+                else if (char.IsPunctuation(e.KeyChar))
+                {
+                    e.Handled = false;
+                }
                 else
                 {
                     e.Handled = true;
@@ -37,6 +41,8 @@ namespace VENTAS
 
 
         }
+
+        
 
         public void SoloNumeros(KeyPressEventArgs e)
         {
@@ -55,8 +61,10 @@ namespace VENTAS
                     e.Handled = false;
                 }
                 else if (char.IsPunctuation(e.KeyChar))
-                {
-                    e.Handled = false;
+                {                   
+                    
+                        e.Handled = false;
+                     
                 }
                 else
                 {

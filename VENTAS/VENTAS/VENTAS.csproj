@@ -70,16 +70,16 @@
     <Compile Include="Model\Cliente.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Creditos_Fiscales.cs">
+    <Compile Include="Model\Compra.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Detalle_Compra.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Detalle_Venta.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Empleado.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\factura.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Facturas_Compras.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Model.Context.cs">
@@ -103,7 +103,10 @@
     <Compile Include="Model\Proveedore.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Ticket.cs">
+    <Compile Include="Model\Tipo_Documentos.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Venta.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -115,17 +118,47 @@
     <Compile Include="Vistas\frmAgregarCategoria.Designer.cs">
       <DependentUpon>frmAgregarCategoria.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\frmBuscarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\frmBuscarCliente.Designer.cs">
+      <DependentUpon>frmBuscarCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\frmBuscarProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\frmBuscarProducto.Designer.cs">
+      <DependentUpon>frmBuscarProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\frmBuscarProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\frmBuscarProveedor.Designer.cs">
+      <DependentUpon>frmBuscarProveedor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\frmCargos.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Vistas\frmCargos.Designer.cs">
       <DependentUpon>frmCargos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\frmClienteNuevo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\frmClienteNuevo.Designer.cs">
+      <DependentUpon>frmClienteNuevo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\frmClientes.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Vistas\frmClientes.Designer.cs">
       <DependentUpon>frmClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\frmCompras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\frmCompras.Designer.cs">
+      <DependentUpon>frmCompras.cs</DependentUpon>
     </Compile>
     <Compile Include="Vistas\frmEmpleados.cs">
       <SubType>Form</SubType>
@@ -145,6 +178,12 @@
     <Compile Include="Vistas\FrmMeniu.Designer.cs">
       <DependentUpon>FrmMeniu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\frmProductoCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\frmProductoCompra.Designer.cs">
+      <DependentUpon>frmProductoCompra.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\frmProductos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,6 +201,12 @@
     </Compile>
     <Compile Include="Vistas\frmProveedores.Designer.cs">
       <DependentUpon>frmProveedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\frmVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\frmVentas.Designer.cs">
+      <DependentUpon>frmVentas.cs</DependentUpon>
     </Compile>
     <Compile Include="Vistas\frmVerClientes.cs">
       <SubType>Form</SubType>
@@ -197,11 +242,26 @@
     <EmbeddedResource Include="Vistas\frmAgregarCategoria.resx">
       <DependentUpon>frmAgregarCategoria.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\frmBuscarCliente.resx">
+      <DependentUpon>frmBuscarCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\frmBuscarProducto.resx">
+      <DependentUpon>frmBuscarProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\frmBuscarProveedor.resx">
+      <DependentUpon>frmBuscarProveedor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vistas\frmCargos.resx">
       <DependentUpon>frmCargos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\frmClienteNuevo.resx">
+      <DependentUpon>frmClienteNuevo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vistas\frmClientes.resx">
       <DependentUpon>frmClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\frmCompras.resx">
+      <DependentUpon>frmCompras.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\frmEmpleados.resx">
       <DependentUpon>frmEmpleados.cs</DependentUpon>
@@ -212,6 +272,9 @@
     <EmbeddedResource Include="Vistas\FrmMeniu.resx">
       <DependentUpon>FrmMeniu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\frmProductoCompra.resx">
+      <DependentUpon>frmProductoCompra.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vistas\frmProductos.resx">
       <DependentUpon>frmProductos.cs</DependentUpon>
     </EmbeddedResource>
@@ -220,6 +283,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\frmProveedores.resx">
       <DependentUpon>frmProveedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\frmVentas.resx">
+      <DependentUpon>frmVentas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\frmVerClientes.resx">
       <DependentUpon>frmVerClientes.cs</DependentUpon>
@@ -270,6 +336,18 @@
     <None Include="Resources\estudiante.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\dinero2.png" />
+    <None Include="Resources\inicio2.png" />
+    <None Include="Resources\inicio.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nuevo.png" />
+    <None Include="Resources\agregar2.png" />
+    <None Include="Resources\facturar.png" />
+    <None Include="Resources\cancelar.png" />
+    <None Include="Resources\buscar.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Model\Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>
@@ -280,9 +358,6 @@
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
-    <None Include="Resources\dinero2.png" />
-    <None Include="Resources\inicio2.png" />
-    <None Include="Resources\inicio.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

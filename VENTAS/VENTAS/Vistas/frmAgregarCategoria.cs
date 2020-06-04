@@ -20,7 +20,28 @@ namespace VENTAS.Vistas
             bloqueo();
         }
 
-        void bloqueo()
+        void filtro()
+        {
+
+            using (VENTASEntities bd = new VENTASEntities())
+            {
+                string nombre = txtBuscar.Text;
+                var lista = from c in bd.Categorias
+                            where c.nombre_categoria.Contains(nombre)
+
+                            select new
+                            {
+                                NUMERO_CATEGORIA = c.id_categoria,
+                                NOMBRE = c.nombre_categoria
+
+                            };
+
+                dgvCategorias.DataSource = lista.ToList();
+
+            }
+        }
+
+            void bloqueo()
         {
             txtNombre.Enabled = false;
            
@@ -55,21 +76,8 @@ namespace VENTAS.Vistas
 
         private void frmAgregarCategoria_Load(object sender, EventArgs e)
         {
-            using (VENTASEntities bd = new VENTASEntities())
-            {
-                var lista = from c in bd.Categorias
 
-                            select new
-                            { 
-                                NUMERO_CATEGORIA = c.id_categoria,
-                                NOMBRE = c.nombre_categoria
-                            
-                            };
-
-                dgvCategorias.DataSource = lista.ToList();
-
-
-            }
+            filtro();
         }
 
         private void dgvCategorias_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -193,6 +201,11 @@ namespace VENTAS.Vistas
         {
             Validacion val = new Validacion();
             val.soloLetras(e);
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            filtro();
         }
     }
 }

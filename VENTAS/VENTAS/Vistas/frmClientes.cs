@@ -22,6 +22,26 @@ namespace VENTAS.Vistas
 
         }
 
+        void filtro()
+        {
+            using (VENTASEntities bd = new VENTASEntities())
+            {
+                string nombre = txtBuscar.Text;
+                var lista = from cli in bd.Clientes
+                            where cli.nombre_cliente.Contains(nombre)
+
+                            select new
+                            {
+                                NUMERO_CLIENTE = cli.id_cliente,
+                                NOMBRE = cli.nombre_cliente,
+                                APELLIDO = cli.apellido_cliente
+                            };
+
+                dgvClientes.DataSource = lista.ToList();
+
+            }
+        }
+
         void cargar()
         {
             using (VENTASEntities bd = new VENTASEntities())
@@ -50,7 +70,7 @@ namespace VENTAS.Vistas
             txtApellido.Enabled = false;
             txtDireccion.Enabled = false;
             txtDui.Enabled = false;
-            txtGiro.Enabled = false;
+           
             txtNit.Enabled = false;
             txtNombre.Enabled = false;
             txtNrc.Enabled = false;
@@ -69,7 +89,7 @@ namespace VENTAS.Vistas
             txtDireccion.Text = "";
             txtDui.Text = "";
             txtDui.Text = "";
-            txtGiro.Text = "";
+            
             txtNit.Text = "";
             txtNombre.Text = "";
             txtNrc.Text = "";
@@ -78,21 +98,7 @@ namespace VENTAS.Vistas
 
         private void frmClientes_Load(object sender, EventArgs e)
         {
-            using (VENTASEntities bd = new VENTASEntities())
-            {
-
-                var lista = from cli in bd.Clientes
-
-                            select new
-                            {
-                                NUMERO_CLIENTE = cli.id_cliente,
-                                NOMBRE = cli.nombre_cliente,
-                                APELLIDO = cli.apellido_cliente
-                            };
-
-                dgvClientes.DataSource = lista.ToList();
-
-            }
+            filtro();
         }
 
         private void dgvClientes_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -109,7 +115,7 @@ namespace VENTAS.Vistas
                 txtApellido.Enabled = true;
                 txtDireccion.Enabled = true;
                 txtDui.Enabled = true;
-                txtGiro.Enabled = true;
+                
                 txtNit.Enabled = true;
                 txtNombre.Enabled = true;
                 txtNrc.Enabled = true;
@@ -124,7 +130,7 @@ namespace VENTAS.Vistas
                 txtApellido.Enabled = true;
                 txtDireccion.Enabled = true;
                 txtDui.Enabled = true;
-                txtGiro.Enabled = true;
+                
                 txtNit.Enabled = true;
                 txtNombre.Enabled = true;
                 txtNrc.Enabled = true;
@@ -145,7 +151,7 @@ namespace VENTAS.Vistas
                 txtApellido.Enabled = true;
                 txtDireccion.Enabled = true;
                 txtDui.Enabled = true;
-                txtGiro.Enabled = true;
+                
                 txtNit.Enabled = true;
                 txtNombre.Enabled = true;
                 txtNrc.Enabled = true;
@@ -161,7 +167,7 @@ namespace VENTAS.Vistas
                 txtApellido.Enabled = true;
                 txtDireccion.Enabled = true;
                 txtDui.Enabled = true;
-                txtGiro.Enabled = true;
+                
                 txtNit.Enabled = true;
                 txtNombre.Enabled = true;
                 txtNrc.Enabled = true;
@@ -176,7 +182,7 @@ namespace VENTAS.Vistas
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (txtApellido.Text != "" && txtDireccion.Text != "" && txtDui.Text != "" && txtGiro.Text != ""
+            if (txtApellido.Text != "" && txtDireccion.Text != "" && txtDui.Text != "" 
                   && txtNit.Text != "" && txtNombre.Text != "" && txtNrc.Text != "" && txtTelefono.Text != "")
             {
                 using (VENTASEntities bd = new VENTASEntities())
@@ -190,7 +196,6 @@ namespace VENTAS.Vistas
                     cli.dui = txtDui.Text;
                     cli.nit = txtNit.Text;
                     cli.nrc = txtNrc.Text;
-                    cli.giro = txtGiro.Text;
                     bd.Clientes.Add(cli);
                     bd.SaveChanges();
                     
@@ -210,7 +215,7 @@ namespace VENTAS.Vistas
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            if (txtApellido.Text != "" && txtDireccion.Text != "" && txtDui.Text != "" && txtGiro.Text != ""
+            if (txtApellido.Text != "" && txtDireccion.Text != "" && txtDui.Text != ""  
                   && txtNit.Text != "" && txtNombre.Text != "" && txtNrc.Text != "" && txtTelefono.Text != "")
             {
 
@@ -223,7 +228,7 @@ namespace VENTAS.Vistas
                     cli.apellido_cliente = txtApellido.Text;
                     cli.direccion = txtDireccion.Text;
                     cli.dui = txtDui.Text;
-                    cli.giro = txtGiro.Text;
+                   
                     cli.nit = txtNit.Text;
                     cli.nombre_cliente = txtNombre.Text;
                     cli.nrc = txtNrc.Text;
@@ -247,7 +252,7 @@ namespace VENTAS.Vistas
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (txtApellido.Text != "" && txtDireccion.Text != "" && txtDui.Text != "" && txtGiro.Text != ""
+            if (txtApellido.Text != "" && txtDireccion.Text != "" && txtDui.Text != ""  
                 && txtNit.Text != "" && txtNombre.Text != "" && txtNrc.Text != "" && txtTelefono.Text != "")
             {
                 using (VENTASEntities bd = new VENTASEntities())
@@ -346,7 +351,7 @@ namespace VENTAS.Vistas
                 txtApellido.Text = cli.apellido_cliente;
                 txtDireccion.Text = cli.direccion;
                 txtDui.Text = cli.dui;
-                txtGiro.Text = cli.giro;
+                
                 txtNit.Text = cli.nit;
                 txtNrc.Text = cli.nrc;
                 txtTelefono.Text = cli.telefono;
@@ -362,6 +367,11 @@ namespace VENTAS.Vistas
         {
             Validacion val = new Validacion();
             val.soloLetras(e);
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            filtro();
         }
     }
 }

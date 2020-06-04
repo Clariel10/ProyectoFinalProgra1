@@ -21,6 +21,53 @@ namespace VENTAS.Vistas
             
         }
 
+        void calcular()
+        {
+            if (txtCosto.Text == null)
+            {
+                MessageBox.Show("No puedes ingresar costos menores a 0");
+                txtCosto.Select();
+            }
+            else
+            {
+                try
+                {
+                    Double costo;
+                    Double precioV;
+
+                    costo = Double.Parse(txtCosto.Text);
+
+                    precioV = ((costo * 0.20) + costo);
+                    txtVenta.Text = precioV.ToString();
+                }
+                catch (Exception ex)
+                {
+                    txtCosto.Text = "0";
+                    txtCosto.Select();
+                }
+            }
+        }
+
+        void filtro()
+        {
+            using (VENTASEntities bd = new VENTASEntities())
+            {
+                string nombre = txtBuscar.Text;
+                var lista = from pro in bd.Productos
+                            where pro.nombre_producto.Contains(nombre)
+
+                            select new
+                            {
+                                NUMERO_PRODUCTO = pro.id_producto,
+                                NOMBRE = pro.nombre_producto
+
+                            };
+
+                dgvProductos.DataSource = lista.ToList();
+
+            }
+        }
+
         void listaProveedores()
         {
             using (VENTASEntities bd = new VENTASEntities())
@@ -154,21 +201,7 @@ namespace VENTAS.Vistas
 
         private void frmProductos_Load(object sender, EventArgs e)
         {
-            using (VENTASEntities bd = new VENTASEntities())
-            {
-
-                var lista = from pro in bd.Productos
-
-                            select new
-                            {
-                                NUMERO_PRODUCTO = pro.id_producto,
-                                NOMBRE = pro.nombre_producto
-
-                            };
-
-                dgvProductos.DataSource = lista.ToList();
-
-            }
+            filtro();
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -317,7 +350,7 @@ namespace VENTAS.Vistas
                 cmbProveedor.Enabled = true;
                 txtCantidad.Enabled = true;
                 txtCosto.Enabled = true;
-                txtVenta.Enabled = true;
+                
                 btnEliminar.Enabled = false;
                 btnGuardar.Enabled = true;
                 btnModificar.Enabled = false;
@@ -335,7 +368,7 @@ namespace VENTAS.Vistas
                 cmbProveedor.Enabled = true;
                 txtCantidad.Enabled = true;
                 txtCosto.Enabled = true;
-                txtVenta.Enabled = true;
+               
                 btnEliminar.Enabled = false;
                 btnGuardar.Enabled = true;
                 btnModificar.Enabled = false;
@@ -374,7 +407,7 @@ namespace VENTAS.Vistas
                 cmbProveedor.Enabled = true;
                 txtCantidad.Enabled = true;
                 txtCosto.Enabled = true;
-                txtVenta.Enabled = true;
+               
                 btnEliminar.Enabled = true;
                 btnGuardar.Enabled = false;
                 btnModificar.Enabled = true;
@@ -405,6 +438,16 @@ namespace VENTAS.Vistas
         {
             Validacion val = new Validacion();
             val.soloLetras(e);
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            filtro();
+        }
+
+        private void txtCosto_Leave(object sender, EventArgs e)
+        {
+            calcular();
         }
     }
 }

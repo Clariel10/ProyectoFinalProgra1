@@ -127,5 +127,23 @@ namespace VENTAS.Vistas
             inicio.Dock = DockStyle.Fill;
             inicio.Show();
         }
+
+        public static frmVentas ventas = new frmVentas();
+        public static frmCompras compras = new frmCompras();
+        
+
+        private void ticketToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+            this.Hide();
+            ventas.Show();
+
+        }
+
+        private void facturaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            compras.Show();
+        }
     }
 }
