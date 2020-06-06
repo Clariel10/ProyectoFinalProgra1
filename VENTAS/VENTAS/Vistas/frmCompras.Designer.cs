@@ -37,6 +37,11 @@
             this.txtCategoriaNueva = new System.Windows.Forms.TextBox();
             this.lblCategoria = new System.Windows.Forms.Label();
             this.lkblCambiarCosto = new System.Windows.Forms.LinkLabel();
+            this.btnNuevo = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnFacturar = new System.Windows.Forms.Button();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            this.btnBuscarProdcuto = new System.Windows.Forms.Button();
             this.lblTotal = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.txtPrecio = new System.Windows.Forms.TextBox();
@@ -64,6 +69,8 @@
             this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnNuevoiCliente = new System.Windows.Forms.Button();
+            this.btnBuscarProveedor = new System.Windows.Forms.Button();
             this.txtTelefono = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtDireccion = new System.Windows.Forms.TextBox();
@@ -75,13 +82,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.lblTipoDocumento = new System.Windows.Forms.Label();
             this.pbCerrar = new System.Windows.Forms.PictureBox();
-            this.btnNuevo = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnFacturar = new System.Windows.Forms.Button();
-            this.btnAgregar = new System.Windows.Forms.Button();
-            this.btnBuscarProdcuto = new System.Windows.Forms.Button();
-            this.btnNuevoiCliente = new System.Windows.Forms.Button();
-            this.btnBuscarProveedor = new System.Windows.Forms.Button();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalleCompra)).BeginInit();
             this.panel4.SuspendLayout();
@@ -152,7 +152,7 @@
             this.cmbCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCategoria.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCategoria.FormattingEnabled = true;
-            this.cmbCategoria.Location = new System.Drawing.Point(519, 55);
+            this.cmbCategoria.Location = new System.Drawing.Point(519, 59);
             this.cmbCategoria.Name = "cmbCategoria";
             this.cmbCategoria.Size = new System.Drawing.Size(123, 25);
             this.cmbCategoria.TabIndex = 60;
@@ -195,6 +195,66 @@
             this.lkblCambiarCosto.TabStop = true;
             this.lkblCambiarCosto.Text = "Cambiar Costo";
             this.lkblCambiarCosto.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lkblCambiarCosto_LinkClicked);
+            // 
+            // btnNuevo
+            // 
+            this.btnNuevo.FlatAppearance.BorderSize = 0;
+            this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNuevo.Image = global::VENTAS.Properties.Resources.nuevo;
+            this.btnNuevo.Location = new System.Drawing.Point(623, 3);
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.Size = new System.Drawing.Size(41, 42);
+            this.btnNuevo.TabIndex = 56;
+            this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.FlatAppearance.BorderSize = 0;
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelar.Image = global::VENTAS.Properties.Resources.cancelar;
+            this.btnCancelar.Location = new System.Drawing.Point(17, 517);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(41, 42);
+            this.btnCancelar.TabIndex = 55;
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // btnFacturar
+            // 
+            this.btnFacturar.FlatAppearance.BorderSize = 0;
+            this.btnFacturar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFacturar.Image = global::VENTAS.Properties.Resources.facturar;
+            this.btnFacturar.Location = new System.Drawing.Point(72, 517);
+            this.btnFacturar.Name = "btnFacturar";
+            this.btnFacturar.Size = new System.Drawing.Size(41, 42);
+            this.btnFacturar.TabIndex = 53;
+            this.btnFacturar.UseVisualStyleBackColor = true;
+            this.btnFacturar.Click += new System.EventHandler(this.btnFacturar_Click);
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.FlatAppearance.BorderSize = 0;
+            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregar.Image = global::VENTAS.Properties.Resources.agregar2;
+            this.btnAgregar.Location = new System.Drawing.Point(647, 52);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(41, 42);
+            this.btnAgregar.TabIndex = 52;
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
+            // btnBuscarProdcuto
+            // 
+            this.btnBuscarProdcuto.FlatAppearance.BorderSize = 0;
+            this.btnBuscarProdcuto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscarProdcuto.Image = global::VENTAS.Properties.Resources.buscar;
+            this.btnBuscarProdcuto.Location = new System.Drawing.Point(574, 3);
+            this.btnBuscarProdcuto.Name = "btnBuscarProdcuto";
+            this.btnBuscarProdcuto.Size = new System.Drawing.Size(41, 42);
+            this.btnBuscarProdcuto.TabIndex = 43;
+            this.btnBuscarProdcuto.UseVisualStyleBackColor = true;
+            this.btnBuscarProdcuto.Click += new System.EventHandler(this.btnBuscarProdcuto_Click);
             // 
             // lblTotal
             // 
@@ -483,6 +543,30 @@
             this.panel3.Size = new System.Drawing.Size(659, 116);
             this.panel3.TabIndex = 57;
             // 
+            // btnNuevoiCliente
+            // 
+            this.btnNuevoiCliente.FlatAppearance.BorderSize = 0;
+            this.btnNuevoiCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNuevoiCliente.Image = global::VENTAS.Properties.Resources.nuevo;
+            this.btnNuevoiCliente.Location = new System.Drawing.Point(610, 13);
+            this.btnNuevoiCliente.Name = "btnNuevoiCliente";
+            this.btnNuevoiCliente.Size = new System.Drawing.Size(41, 42);
+            this.btnNuevoiCliente.TabIndex = 62;
+            this.btnNuevoiCliente.UseVisualStyleBackColor = true;
+            this.btnNuevoiCliente.Click += new System.EventHandler(this.btnNuevoiCliente_Click);
+            // 
+            // btnBuscarProveedor
+            // 
+            this.btnBuscarProveedor.FlatAppearance.BorderSize = 0;
+            this.btnBuscarProveedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscarProveedor.Image = global::VENTAS.Properties.Resources.buscar;
+            this.btnBuscarProveedor.Location = new System.Drawing.Point(560, 13);
+            this.btnBuscarProveedor.Name = "btnBuscarProveedor";
+            this.btnBuscarProveedor.Size = new System.Drawing.Size(41, 42);
+            this.btnBuscarProveedor.TabIndex = 42;
+            this.btnBuscarProveedor.UseVisualStyleBackColor = true;
+            this.btnBuscarProveedor.Click += new System.EventHandler(this.btnBuscarProveedor_Click);
+            // 
             // txtTelefono
             // 
             this.txtTelefono.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -599,90 +683,6 @@
             this.pbCerrar.TabIndex = 62;
             this.pbCerrar.TabStop = false;
             this.pbCerrar.Click += new System.EventHandler(this.pbCerrar_Click);
-            // 
-            // btnNuevo
-            // 
-            this.btnNuevo.FlatAppearance.BorderSize = 0;
-            this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNuevo.Image = global::VENTAS.Properties.Resources.nuevo;
-            this.btnNuevo.Location = new System.Drawing.Point(623, 3);
-            this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(41, 42);
-            this.btnNuevo.TabIndex = 56;
-            this.btnNuevo.UseVisualStyleBackColor = true;
-            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.FlatAppearance.BorderSize = 0;
-            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Image = global::VENTAS.Properties.Resources.cancelar;
-            this.btnCancelar.Location = new System.Drawing.Point(17, 517);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(41, 42);
-            this.btnCancelar.TabIndex = 55;
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
-            // btnFacturar
-            // 
-            this.btnFacturar.FlatAppearance.BorderSize = 0;
-            this.btnFacturar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFacturar.Image = global::VENTAS.Properties.Resources.facturar;
-            this.btnFacturar.Location = new System.Drawing.Point(72, 517);
-            this.btnFacturar.Name = "btnFacturar";
-            this.btnFacturar.Size = new System.Drawing.Size(41, 42);
-            this.btnFacturar.TabIndex = 53;
-            this.btnFacturar.UseVisualStyleBackColor = true;
-            this.btnFacturar.Click += new System.EventHandler(this.btnFacturar_Click);
-            // 
-            // btnAgregar
-            // 
-            this.btnAgregar.FlatAppearance.BorderSize = 0;
-            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregar.Image = global::VENTAS.Properties.Resources.agregar2;
-            this.btnAgregar.Location = new System.Drawing.Point(647, 52);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(41, 42);
-            this.btnAgregar.TabIndex = 52;
-            this.btnAgregar.UseVisualStyleBackColor = true;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
-            // 
-            // btnBuscarProdcuto
-            // 
-            this.btnBuscarProdcuto.FlatAppearance.BorderSize = 0;
-            this.btnBuscarProdcuto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscarProdcuto.Image = global::VENTAS.Properties.Resources.buscar;
-            this.btnBuscarProdcuto.Location = new System.Drawing.Point(574, 3);
-            this.btnBuscarProdcuto.Name = "btnBuscarProdcuto";
-            this.btnBuscarProdcuto.Size = new System.Drawing.Size(41, 42);
-            this.btnBuscarProdcuto.TabIndex = 43;
-            this.btnBuscarProdcuto.UseVisualStyleBackColor = true;
-            this.btnBuscarProdcuto.Click += new System.EventHandler(this.btnBuscarProdcuto_Click);
-            // 
-            // btnNuevoiCliente
-            // 
-            this.btnNuevoiCliente.FlatAppearance.BorderSize = 0;
-            this.btnNuevoiCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNuevoiCliente.Image = global::VENTAS.Properties.Resources.nuevo;
-            this.btnNuevoiCliente.Location = new System.Drawing.Point(610, 13);
-            this.btnNuevoiCliente.Name = "btnNuevoiCliente";
-            this.btnNuevoiCliente.Size = new System.Drawing.Size(41, 42);
-            this.btnNuevoiCliente.TabIndex = 62;
-            this.btnNuevoiCliente.UseVisualStyleBackColor = true;
-            this.btnNuevoiCliente.Click += new System.EventHandler(this.btnNuevoiCliente_Click);
-            // 
-            // btnBuscarProveedor
-            // 
-            this.btnBuscarProveedor.FlatAppearance.BorderSize = 0;
-            this.btnBuscarProveedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscarProveedor.Image = global::VENTAS.Properties.Resources.buscar;
-            this.btnBuscarProveedor.Location = new System.Drawing.Point(560, 13);
-            this.btnBuscarProveedor.Name = "btnBuscarProveedor";
-            this.btnBuscarProveedor.Size = new System.Drawing.Size(41, 42);
-            this.btnBuscarProveedor.TabIndex = 42;
-            this.btnBuscarProveedor.UseVisualStyleBackColor = true;
-            this.btnBuscarProveedor.Click += new System.EventHandler(this.btnBuscarProveedor_Click);
             // 
             // frmCompras
             // 

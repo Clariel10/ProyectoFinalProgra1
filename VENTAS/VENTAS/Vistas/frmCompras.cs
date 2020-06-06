@@ -80,7 +80,7 @@ namespace VENTAS.Vistas
             RetornarId();
             dgvDetalleCompra.Rows.Clear();
             lblTotal.Text = "";
-            MessageBox.Show("Venta Guardada conn exito");
+            MessageBox.Show("Venta Guardada con exito");
         }
         public void listaCategorias()
         {
@@ -133,10 +133,10 @@ namespace VENTAS.Vistas
 
                 txtTotal.Text = Convert.ToString(subtotal);
 
-                SubTotal = SubTotal + (decimal.Parse(txtTotal.Text));
-                Total = SubTotal;
+                //SubTotal = SubTotal + (decimal.Parse(txtTotal.Text));
+                //Total = SubTotal;
 
-                lblTotal.Text = Total.ToString();
+                //lblTotal.Text = Total.ToString();
 
             }
             catch (Exception ex)
@@ -212,6 +212,7 @@ namespace VENTAS.Vistas
                                 calculo();
                                 dgvDetalleCompra.Rows.Add("", txtNombreProducto.Text, txtPrecio.Text,
                                txtCantidad.Text, txtTotal.Text, categoria, valor, txtNombreProveedor.Text);
+                                calculartotalfinal();
                                 LimpiarProveedor();
                                 restaurarformulario();
                                 bloquear();
@@ -259,6 +260,7 @@ namespace VENTAS.Vistas
                                 calculo();
                                 dgvDetalleCompra.Rows.Add("", txtNombreProducto.Text, txtPrecio.Text,
                                txtCantidad.Text, txtTotal.Text, categoria, valor, txtNombreProveedor.Text);
+                                calculartotalfinal();
                                 LimpiarProveedor();
                                 restaurarformulario();
                                 bloquear();
@@ -310,6 +312,7 @@ namespace VENTAS.Vistas
                                 calculo();
                                 dgvDetalleCompra.Rows.Add("", txtNombreProducto.Text, txtPrecio.Text,
                                txtCantidad.Text, txtTotal.Text, categoria, valor, txtNombreProveedor.Text, txtTelefono.Text, txtDireccion.Text);
+                                calculartotalfinal();
                                 LimpiarProveedor();
                                 restaurarformulario();
                                 bloquear();
@@ -357,6 +360,7 @@ namespace VENTAS.Vistas
                                 calculo();
                                 dgvDetalleCompra.Rows.Add("", txtNombreProducto.Text, txtPrecio.Text,
                                txtCantidad.Text, txtTotal.Text, categoria, valor, txtNombreProveedor.Text, txtTelefono.Text, txtDireccion.Text);
+                                calculartotalfinal();
                                 LimpiarProveedor();
                                 restaurarformulario();
                                 bloquear();
@@ -399,6 +403,7 @@ namespace VENTAS.Vistas
                             calculo();
                             dgvDetalleCompra.Rows.Add(txtCodigoProducto.Text, txtNombreProducto.Text, txtPrecio.Text,
                         txtCantidad.Text, txtTotal.Text, "", valor, txtNombreProveedor.Text);
+                            calculartotalfinal();
                             LimpiarProveedor();
 
                             dgvDetalleCompra.Refresh();
@@ -422,6 +427,7 @@ namespace VENTAS.Vistas
                                 calculo();
                                 dgvDetalleCompra.Rows.Add(txtCodigoProducto.Text, txtNombreProducto.Text, txtPrecio.Text,
                             txtCantidad.Text, txtTotal.Text, "", valor, txtNombreProveedor.Text);
+                                calculartotalfinal();
                                 LimpiarProveedor();
 
                                 dgvDetalleCompra.Refresh();
@@ -466,9 +472,11 @@ namespace VENTAS.Vistas
                         if (idproveedor == idproveedor2)
                         {
                             string valor = "3";
+
                             calculo();
                             dgvDetalleCompra.Rows.Add(txtCodigoProducto.Text, txtNombreProducto.Text, txtPrecio.Text,
                         txtCantidad.Text, txtTotal.Text, "", valor, txtNombreProveedor.Text);
+                            calculartotalfinal();
                             LimpiarProveedor();
 
                             dgvDetalleCompra.Refresh();
@@ -493,6 +501,7 @@ namespace VENTAS.Vistas
                                 calculo();
                                 dgvDetalleCompra.Rows.Add(txtCodigoProducto.Text, txtNombreProducto.Text, txtPrecio.Text,
                             txtCantidad.Text, txtTotal.Text, "", valor, txtNombreProveedor.Text);
+                                calculartotalfinal();
                                 LimpiarProveedor();
 
                                 dgvDetalleCompra.Refresh();
@@ -537,6 +546,7 @@ namespace VENTAS.Vistas
                             calculo();
                             dgvDetalleCompra.Rows.Add(txtCodigoProducto.Text, txtNombreProducto.Text, txtPrecio.Text,
                         txtCantidad.Text, txtTotal.Text, "", valor, txtNombreProveedor.Text, txtTelefono.Text, txtDireccion.Text);
+                            calculartotalfinal();
                             LimpiarProveedor();
                             restaurarformulario();
 
@@ -578,6 +588,7 @@ namespace VENTAS.Vistas
                             calculo();
                             dgvDetalleCompra.Rows.Add(txtCodigoProducto.Text, txtNombreProducto.Text, txtPrecio.Text,
                         txtCantidad.Text, txtTotal.Text, "", valor, txtNombreProveedor.Text, txtTelefono.Text, txtDireccion.Text);
+                            calculartotalfinal();
                             LimpiarProveedor();
                             restaurarformulario();
 
