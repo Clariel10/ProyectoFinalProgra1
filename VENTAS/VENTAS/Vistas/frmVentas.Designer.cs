@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvDetalleVenta = new System.Windows.Forms.DataGridView();
             this.CODIGO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DESCRIPCION = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,6 +47,8 @@
             this.cbFactura = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnNuevoiCliente = new System.Windows.Forms.Button();
+            this.btnBuscarCliente = new System.Windows.Forms.Button();
             this.txtDUI = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtApellidoCliente = new System.Windows.Forms.TextBox();
@@ -61,7 +63,11 @@
             this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             this.label11 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.txtTotal = new System.Windows.Forms.TextBox();
+            this.btnFacturar = new System.Windows.Forms.Button();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            this.btnBuscarProdcuto = new System.Windows.Forms.Button();
             this.lblTotal = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.txtPrecio = new System.Windows.Forms.TextBox();
@@ -73,12 +79,8 @@
             this.txtNombreProducto = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.pbCerrar = new System.Windows.Forms.PictureBox();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnFacturar = new System.Windows.Forms.Button();
-            this.btnAgregar = new System.Windows.Forms.Button();
-            this.btnBuscarProdcuto = new System.Windows.Forms.Button();
-            this.btnNuevoiCliente = new System.Windows.Forms.Button();
-            this.btnBuscarCliente = new System.Windows.Forms.Button();
+            this.lblNombreCajero = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalleVenta)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -94,15 +96,15 @@
             this.dgvDetalleVenta.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDetalleVenta.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dgvDetalleVenta.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.NullValue = null;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDetalleVenta.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.NullValue = null;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDetalleVenta.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvDetalleVenta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDetalleVenta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CODIGO,
@@ -110,14 +112,14 @@
             this.UNITARIO,
             this.CANTIDAD,
             this.tol});
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDetalleVenta.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDetalleVenta.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvDetalleVenta.Location = new System.Drawing.Point(17, 104);
             this.dgvDetalleVenta.Name = "dgvDetalleVenta";
             this.dgvDetalleVenta.ReadOnly = true;
@@ -291,6 +293,31 @@
             this.panel3.Size = new System.Drawing.Size(659, 116);
             this.panel3.TabIndex = 36;
             // 
+            // btnNuevoiCliente
+            // 
+            this.btnNuevoiCliente.FlatAppearance.BorderSize = 0;
+            this.btnNuevoiCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNuevoiCliente.Image = global::VENTAS.Properties.Resources.nuevo;
+            this.btnNuevoiCliente.Location = new System.Drawing.Point(610, 46);
+            this.btnNuevoiCliente.Name = "btnNuevoiCliente";
+            this.btnNuevoiCliente.Size = new System.Drawing.Size(41, 42);
+            this.btnNuevoiCliente.TabIndex = 63;
+            this.btnNuevoiCliente.UseVisualStyleBackColor = true;
+            this.btnNuevoiCliente.Click += new System.EventHandler(this.btnNuevoiCliente_Click);
+            // 
+            // btnBuscarCliente
+            // 
+            this.btnBuscarCliente.FlatAppearance.BorderSize = 0;
+            this.btnBuscarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscarCliente.Image = global::VENTAS.Properties.Resources.buscar;
+            this.btnBuscarCliente.Location = new System.Drawing.Point(602, 6);
+            this.btnBuscarCliente.Name = "btnBuscarCliente";
+            this.btnBuscarCliente.Size = new System.Drawing.Size(41, 42);
+            this.btnBuscarCliente.TabIndex = 42;
+            this.btnBuscarCliente.UseVisualStyleBackColor = true;
+            this.btnBuscarCliente.Click += new System.EventHandler(this.btnBuscarCliente_Click);
+            this.btnBuscarCliente.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnBuscarCliente_KeyDown);
+            // 
             // txtDUI
             // 
             this.txtDUI.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -456,6 +483,18 @@
             this.panel5.Size = new System.Drawing.Size(692, 577);
             this.panel5.TabIndex = 40;
             // 
+            // btnCancelar
+            // 
+            this.btnCancelar.FlatAppearance.BorderSize = 0;
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelar.Image = global::VENTAS.Properties.Resources.cancelar;
+            this.btnCancelar.Location = new System.Drawing.Point(17, 517);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(41, 42);
+            this.btnCancelar.TabIndex = 55;
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
             // txtTotal
             // 
             this.txtTotal.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -465,6 +504,42 @@
             this.txtTotal.Size = new System.Drawing.Size(57, 16);
             this.txtTotal.TabIndex = 54;
             this.txtTotal.Visible = false;
+            // 
+            // btnFacturar
+            // 
+            this.btnFacturar.FlatAppearance.BorderSize = 0;
+            this.btnFacturar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFacturar.Image = global::VENTAS.Properties.Resources.facturar;
+            this.btnFacturar.Location = new System.Drawing.Point(72, 517);
+            this.btnFacturar.Name = "btnFacturar";
+            this.btnFacturar.Size = new System.Drawing.Size(41, 42);
+            this.btnFacturar.TabIndex = 53;
+            this.btnFacturar.UseVisualStyleBackColor = true;
+            this.btnFacturar.Click += new System.EventHandler(this.btnFacturar_Click);
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.FlatAppearance.BorderSize = 0;
+            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregar.Image = global::VENTAS.Properties.Resources.agregar2;
+            this.btnAgregar.Location = new System.Drawing.Point(555, 51);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(41, 42);
+            this.btnAgregar.TabIndex = 52;
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
+            // btnBuscarProdcuto
+            // 
+            this.btnBuscarProdcuto.FlatAppearance.BorderSize = 0;
+            this.btnBuscarProdcuto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscarProdcuto.Image = global::VENTAS.Properties.Resources.buscar;
+            this.btnBuscarProdcuto.Location = new System.Drawing.Point(602, 11);
+            this.btnBuscarProdcuto.Name = "btnBuscarProdcuto";
+            this.btnBuscarProdcuto.Size = new System.Drawing.Size(41, 42);
+            this.btnBuscarProdcuto.TabIndex = 43;
+            this.btnBuscarProdcuto.UseVisualStyleBackColor = true;
+            this.btnBuscarProdcuto.Click += new System.EventHandler(this.btnBuscarProdcuto_Click);
             // 
             // lblTotal
             // 
@@ -584,78 +659,27 @@
             this.pbCerrar.TabStop = false;
             this.pbCerrar.Click += new System.EventHandler(this.pbCerrar_Click);
             // 
-            // btnCancelar
+            // lblNombreCajero
             // 
-            this.btnCancelar.FlatAppearance.BorderSize = 0;
-            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Image = global::VENTAS.Properties.Resources.cancelar;
-            this.btnCancelar.Location = new System.Drawing.Point(17, 517);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(41, 42);
-            this.btnCancelar.TabIndex = 55;
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            this.lblNombreCajero.AutoSize = true;
+            this.lblNombreCajero.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombreCajero.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblNombreCajero.Location = new System.Drawing.Point(144, 870);
+            this.lblNombreCajero.Name = "lblNombreCajero";
+            this.lblNombreCajero.Size = new System.Drawing.Size(61, 19);
+            this.lblNombreCajero.TabIndex = 53;
+            this.lblNombreCajero.Text = "Cajero";
             // 
-            // btnFacturar
+            // label7
             // 
-            this.btnFacturar.FlatAppearance.BorderSize = 0;
-            this.btnFacturar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFacturar.Image = global::VENTAS.Properties.Resources.facturar;
-            this.btnFacturar.Location = new System.Drawing.Point(72, 517);
-            this.btnFacturar.Name = "btnFacturar";
-            this.btnFacturar.Size = new System.Drawing.Size(41, 42);
-            this.btnFacturar.TabIndex = 53;
-            this.btnFacturar.UseVisualStyleBackColor = true;
-            this.btnFacturar.Click += new System.EventHandler(this.btnFacturar_Click);
-            // 
-            // btnAgregar
-            // 
-            this.btnAgregar.FlatAppearance.BorderSize = 0;
-            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregar.Image = global::VENTAS.Properties.Resources.agregar2;
-            this.btnAgregar.Location = new System.Drawing.Point(555, 51);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(41, 42);
-            this.btnAgregar.TabIndex = 52;
-            this.btnAgregar.UseVisualStyleBackColor = true;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
-            // 
-            // btnBuscarProdcuto
-            // 
-            this.btnBuscarProdcuto.FlatAppearance.BorderSize = 0;
-            this.btnBuscarProdcuto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscarProdcuto.Image = global::VENTAS.Properties.Resources.buscar;
-            this.btnBuscarProdcuto.Location = new System.Drawing.Point(602, 11);
-            this.btnBuscarProdcuto.Name = "btnBuscarProdcuto";
-            this.btnBuscarProdcuto.Size = new System.Drawing.Size(41, 42);
-            this.btnBuscarProdcuto.TabIndex = 43;
-            this.btnBuscarProdcuto.UseVisualStyleBackColor = true;
-            this.btnBuscarProdcuto.Click += new System.EventHandler(this.btnBuscarProdcuto_Click);
-            // 
-            // btnNuevoiCliente
-            // 
-            this.btnNuevoiCliente.FlatAppearance.BorderSize = 0;
-            this.btnNuevoiCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNuevoiCliente.Image = global::VENTAS.Properties.Resources.nuevo;
-            this.btnNuevoiCliente.Location = new System.Drawing.Point(610, 46);
-            this.btnNuevoiCliente.Name = "btnNuevoiCliente";
-            this.btnNuevoiCliente.Size = new System.Drawing.Size(41, 42);
-            this.btnNuevoiCliente.TabIndex = 63;
-            this.btnNuevoiCliente.UseVisualStyleBackColor = true;
-            this.btnNuevoiCliente.Click += new System.EventHandler(this.btnNuevoiCliente_Click);
-            // 
-            // btnBuscarCliente
-            // 
-            this.btnBuscarCliente.FlatAppearance.BorderSize = 0;
-            this.btnBuscarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscarCliente.Image = global::VENTAS.Properties.Resources.buscar;
-            this.btnBuscarCliente.Location = new System.Drawing.Point(602, 6);
-            this.btnBuscarCliente.Name = "btnBuscarCliente";
-            this.btnBuscarCliente.Size = new System.Drawing.Size(41, 42);
-            this.btnBuscarCliente.TabIndex = 42;
-            this.btnBuscarCliente.UseVisualStyleBackColor = true;
-            this.btnBuscarCliente.Click += new System.EventHandler(this.btnBuscarCliente_Click);
-            this.btnBuscarCliente.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnBuscarCliente_KeyDown);
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Gainsboro;
+            this.label7.Location = new System.Drawing.Point(12, 870);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(115, 19);
+            this.label7.TabIndex = 54;
+            this.label7.Text = "Atendido por:";
             // 
             // frmVentas
             // 
@@ -663,6 +687,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CadetBlue;
             this.ClientSize = new System.Drawing.Size(716, 898);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.lblNombreCajero);
             this.Controls.Add(this.pbCerrar);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.panel5);
@@ -745,5 +771,7 @@
         public System.Windows.Forms.TextBox txtNombreCliente;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnNuevoiCliente;
+        public System.Windows.Forms.Label lblNombreCajero;
+        public System.Windows.Forms.Label label7;
     }
 }

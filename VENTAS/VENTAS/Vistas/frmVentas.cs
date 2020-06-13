@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -41,28 +42,72 @@ namespace VENTAS.Vistas
             }
         }
 
-        //void evaluar()
-        //{
-        //    using (VENTASEntities bd = new VENTASEntities())
-        //    {
+        void evaluar()
+        {
+            using (VENTASEntities bd = new VENTASEntities())
+            {
+                Producto pro = new Producto();
+                int a = 0;
 
-        //        for (int i = 0; i < dgvDetalleVenta.RowCount; i++)
-        //        {
-        //            string id = dgvDetalleVenta.Rows[i].Cells[0].Value.ToString();
-        //            int idTabla = Convert.ToInt32(id);
+                if (a == dgvDetalleVenta.RowCount)
+                {
 
-        //            int idDatos = Convert.ToInt32(txtCodigoProducto.Text);
+                }
+                else if (a < dgvDetalleVenta.RowCount)
+                {
+                    for (int i = 0; i < dgvDetalleVenta.RowCount; i++)
+                    {
+                        string id = dgvDetalleVenta.Rows[i].Cells[0].Value.ToString();
+                        int idTabla = Convert.ToInt32(id);
 
-        //            if (idTabla == idDatos)
-        //            {
-        //                int suma = idDatos + idTabla;
-        //                string sumaconvertida = Convert.ToString(suma);
+                        string nombreprod = dgvDetalleVenta.Rows[i].Cells[1].Value.ToString();
 
-        //                dgvDetalleVenta.Rows[i].Cells[3].
-        //            }
-        //        }
-        //    }
-        //}
+                        int idDatos = Convert.ToInt32(txtCodigoProducto.Text);
+
+                        if (idTabla == idDatos)
+                        {
+
+                            //DATOS CAJAS DE TEXTO
+                            int cantidad = Convert.ToInt32(txtCantidad.Text);
+
+                            double total = Convert.ToDouble(txtTotal.Text);
+
+                            //DATOS DARAGRIDVIEW
+                            string cantidadGrid = dgvDetalleVenta.Rows[i].Cells[3].Value.ToString();
+                            int cantidadGridConver = Convert.ToInt32(cantidadGrid);
+
+                            string precio = dgvDetalleVenta.Rows[i].Cells[2].Value.ToString();
+
+                            string totalGrid = dgvDetalleVenta.Rows[i].Cells[4].Value.ToString();
+                            double totalGridConvert = Convert.ToDouble(totalGrid);
+
+                            //OPERACIONES
+                            int suma = cantidad + cantidadGridConver;
+                            string sumacantidad = Convert.ToString(suma);
+
+                            double suma3 = total + totalGridConvert;
+                            string suma2Total = Convert.ToString(suma3);
+
+                            //BORRANDO LA FILA DE DATOS
+
+                            //int ultimafila = dgvDetalleVenta.Rows.Count - 1;
+                            dgvDetalleVenta.Rows.RemoveAt(i);
+
+                            //ENVIANDO DATOS NUEVOS
+
+                            //dgvDetalleVenta.Rows[i].Cells[3].Value = sumacantidad;
+
+                            //dgvDetalleVenta.Rows[i].Cells[4].Value = suma2Total;
+
+                            dgvDetalleVenta.Rows.Add(id, nombreprod, precio, sumacantidad, suma2Total);
+
+
+                        }
+                        
+                    }
+                }               
+            }
+        }
 
         void RetornarId()
         {
@@ -93,11 +138,7 @@ namespace VENTAS.Vistas
                 decimal subtotal = (cantidad * precio);
 
                 txtTotal.Text = Convert.ToString(subtotal);
-
-                SubTotal = SubTotal + (decimal.Parse(txtTotal.Text));
-                Total = SubTotal;
-
-                lblTotal.Text = Total.ToString();
+                
 
             }
             catch (Exception ex)
@@ -172,9 +213,9 @@ namespace VENTAS.Vistas
                 {
                     if (cbFactura.Checked == true && cbTickect.Checked == false)
                     {
-                        
-                        //string buscarEmpleado = log.txtUsuario.Text;
-                        //em = bd.Empleados.Where(idBuscar => idBuscar.usuario == buscarEmpleado).First();
+                                                
+                        em = bd.Empleados.Where(idBuscar => idBuscar.nombre_empleado == lblNombreCajero.Text).First();
+                        int idEmpleado = em.id_empleado;
 
                         string buscarCliente = txtDUI.Text;
                         cli = bd.Clientes.Where(idBuscar => idBuscar.dui == buscarCliente).First();
@@ -182,7 +223,7 @@ namespace VENTAS.Vistas
 
                         tbV.id_documento = 1;
                         tbV.id_cliente = cli.id_cliente;
-                        tbV.id_empleado = 1;
+                        tbV.id_empleado = idEmpleado;
                         tbV.total_venta = Convert.ToDecimal(lblTotal.Text);
                         tbV.fecha = Convert.ToDateTime(dtpFecha.Text);
                         bd.Ventas.Add(tbV);
@@ -190,13 +231,12 @@ namespace VENTAS.Vistas
                     }
                     else if (cbTickect.Checked == true && cbFactura.Checked == false)
                     {
-                        //string buscarEmpleado = log.txtUsuario.Text;
-                        //em = bd.Empleados.Where(idBuscar => idBuscar.usuario == buscarEmpleado).First();
+                        em = bd.Empleados.Where(idBuscar => idBuscar.nombre_empleado == lblNombreCajero.Text).First();
+                        int idEmpleado = em.id_empleado;
 
-                        
                         tbV.id_documento = 2;
                         tbV.id_cliente = 1;
-                        tbV.id_empleado = 1;
+                        tbV.id_empleado = idEmpleado;
                         tbV.total_venta = Convert.ToDecimal(lblTotal.Text);
                         tbV.fecha = Convert.ToDateTime(dtpFecha.Text);
                         bd.Ventas.Add(tbV);
@@ -225,6 +265,8 @@ namespace VENTAS.Vistas
                         dete.precio = TotalConvertido;
                         bd.Detalle_Venta.Add(dete);
                         bd.SaveChanges();
+
+                        
                     }
 
                     Producto pro = new Producto();
@@ -258,6 +300,7 @@ namespace VENTAS.Vistas
                     dgvDetalleVenta.Rows.Clear();
                     RetornarId();
                     lblTotal.Text = "";
+                    MessageBox.Show("Venta Guardada con exito");
                 }
                 else
                 {
@@ -274,7 +317,6 @@ namespace VENTAS.Vistas
 
                 if (txtCantidad.Text != "" && txtCodigoProducto.Text != "" && txtNombreProducto.Text != "" && txtPrecio.Text != "")
                 {
-                    
 
                     string id = txtCodigoProducto.Text;
                     int cantidadCompra = Convert.ToInt32(txtCantidad.Text);
@@ -293,18 +335,22 @@ namespace VENTAS.Vistas
                     {
 
                         calculo();
+                        //evaluar();
                         dgvDetalleVenta.Rows.Add(txtCodigoProducto.Text, txtNombreProducto.Text, txtPrecio.Text,
-                    txtCantidad.Text, txtTotal.Text);
+                                txtCantidad.Text, txtTotal.Text);
+
+                        calculartotalfinal();
 
                         dgvDetalleVenta.Refresh();
                         dgvDetalleVenta.ClearSelection();
                         int ultimafila = dgvDetalleVenta.Rows.Count - 1;
                         dgvDetalleVenta.FirstDisplayedScrollingRowIndex = ultimafila;
                         dgvDetalleVenta.Rows[ultimafila].Selected = true;
-
+                        limpiarproducto();
 
                     }
                 }
+            
                 else
                 {
                     MessageBox.Show("Datos vacios");
@@ -312,10 +358,7 @@ namespace VENTAS.Vistas
 
                                
             }
-
-                
-                            
-            limpiarproducto();
+           
         }
 
         private void btnBuscarProdcuto_Click(object sender, EventArgs e)
@@ -364,9 +407,8 @@ namespace VENTAS.Vistas
             dtpFecha.Text = "";
             cbFactura.Checked = false;
             cbTickect.Checked = false;
-            FrmMeniu m = new FrmMeniu();
             this.Hide();
-            m.Show();
+            Log_in.m.Show();
 
         }
 
@@ -403,7 +445,6 @@ namespace VENTAS.Vistas
                     txtCantidad.Focus();
                     intentos = 2;
                 }
-
 
             }
         }

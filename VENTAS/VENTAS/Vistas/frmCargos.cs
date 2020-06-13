@@ -221,6 +221,27 @@ namespace VENTAS.Vistas
         {
             filtro();
         }
+
+        private void txtNombre_Leave(object sender, EventArgs e)
+        {
+            using (VENTASEntities bd = new VENTASEntities())
+            {
+                if (txtNombre.Text != "")
+                {
+                    var Revisar = from car in bd.Cargos
+                                  where car.nombre_cargo == txtNombre.Text
+                                  select car;
+
+                    if (Revisar.Count() > 0)
+                    {
+                        txtNombre.Text = "";
+                        MessageBox.Show("Nombre de Cargo existente\n" +
+                                        "  Intente otro por favor");
+                    }
+
+                }
+            }
+        }
     }
 }
 

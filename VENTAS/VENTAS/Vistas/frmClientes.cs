@@ -373,5 +373,26 @@ namespace VENTAS.Vistas
         {
             filtro();
         }
+
+        private void txtDui_Leave(object sender, EventArgs e)
+        {
+            using (VENTASEntities bd = new VENTASEntities())
+            {
+                if (txtDui.Text != "")
+                {
+                    var Revisar = from car in bd.Clientes
+                                  where car.dui == txtDui.Text
+                                  select car;
+
+                    if (Revisar.Count() > 0)
+                    {
+                        txtDui.Text = "";
+                        MessageBox.Show("Cliente existente");
+                                        
+                    }
+
+                }
+            }
+        }
     }
 }

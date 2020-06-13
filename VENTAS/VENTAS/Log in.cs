@@ -34,12 +34,18 @@ namespace VENTAS
         {
             
 
-            }
+        }
+
+        
+
+        public static FrmMeniu m = new FrmMeniu();
 
         private void button1_Click(object sender, EventArgs e)
         {
             using (VENTASEntities bd = new VENTASEntities())
             {
+                
+
                 var entrar = from us in bd.Empleados
                              where us.usuario == txtUsuario.Text
                              && us.contrasenia == txtContra.Text
@@ -47,9 +53,35 @@ namespace VENTAS
 
                 if (entrar.Count() > 0)
                 {
-                    FrmMeniu m = new FrmMeniu();
-                    m.ShowDialog();
-                    this.Hide();
+                    Empleado em = new Empleado();
+
+                    em = bd.Empleados.Where(Buscar => Buscar.usuario == txtUsuario.Text).First();
+                    int idCargo = em.id_cargo;
+
+                    string nombreCajero = em.nombre_empleado;
+
+                    if (idCargo == 1)
+                    {
+                        FrmMeniu.ventas.lblNombreCajero.Text = nombreCajero;
+                        FrmMeniu.compras.lblNombreCajero.Text = nombreCajero;
+                        m.ShowDialog();
+                        this.Hide();
+                    }
+                    else if (idCargo == 2)
+                    {
+                        FrmMeniu.ventas.lblNombreCajero.Text = nombreCajero;
+                        FrmMeniu.compras.lblNombreCajero.Text = nombreCajero;
+                        m.agregarYModificarCliente.Enabled = false;
+                        m.agregarYModificarEmpleado.Enabled = false;
+                        m.agregarYEditarProveedor.Enabled = false;
+                        m.productosPrincipal.Visible = false;
+                        m.agregarYModificarEmpleado.Enabled = false;
+                        m.cargosEmpleado.Enabled = false;
+                        m.ShowDialog();
+                        this.Hide();
+                    }
+                    
+                   
                 }
                 else
                 {

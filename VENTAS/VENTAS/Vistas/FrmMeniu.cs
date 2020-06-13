@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VENTAS.Consultar_RPT;
+//using VENTAS.Consultar_RPT;
 
 namespace VENTAS.Vistas
 {
@@ -144,6 +146,22 @@ namespace VENTAS.Vistas
         {
             this.Hide();
             compras.Show();
+        }
+
+        private void ventasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmrptProductos rpt = new frmrptProductos();
+            rpt.MdiParent = this;
+            rpt.Dock = DockStyle.Fill;
+            rpt.Show();
+        }
+
+        private void comprasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmrptCompras rpt2 = new frmrptCompras();
+            rpt2.MdiParent = this;
+            rpt2.Dock = DockStyle.Fill;
+            rpt2.Show();
         }
     }
 }

@@ -256,6 +256,7 @@
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(463, 27);
             this.txtUsuario.TabIndex = 3;
+            this.txtUsuario.Leave += new System.EventHandler(this.txtUsuario_Leave);
             // 
             // label7
             // 

@@ -207,5 +207,26 @@ namespace VENTAS.Vistas
         {
             filtro();
         }
+
+        private void txtNombre_Leave(object sender, EventArgs e)
+        {
+            using (VENTASEntities bd = new VENTASEntities())
+            {
+                if (txtNombre.Text != "")
+                {
+                    var Revisar = from car in bd.Categorias
+                                  where car.nombre_categoria == txtNombre.Text
+                                  select car;
+
+                    if (Revisar.Count() > 0)
+                    {
+                        txtNombre.Text = "";
+                        MessageBox.Show("Nombre de Categoria existente\n" +
+                                        "  Intente otro por favor");
+                    }
+
+                }
+            }
+        }
     }
 }

@@ -222,5 +222,26 @@ namespace VENTAS.Vistas
         {
             filtro();
         }
+
+        private void txtNombre_Leave(object sender, EventArgs e)
+        {
+            using (VENTASEntities bd = new VENTASEntities())
+            {
+                if (txtNombre.Text != "")
+                {
+                    var Revisar = from pro in bd.Proveedores
+                                  where pro.nombre_proveedor == txtNombre.Text
+                                  select pro;
+
+                    if (Revisar.Count() > 0)
+                    {
+                        txtNombre.Text = "";
+                        MessageBox.Show("Proveedor existente");
+
+                    }
+
+                }
+            }
+        }
     }
 }

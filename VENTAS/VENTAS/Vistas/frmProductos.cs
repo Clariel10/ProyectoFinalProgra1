@@ -449,5 +449,26 @@ namespace VENTAS.Vistas
         {
             calcular();
         }
+
+        private void txtNombre_Leave(object sender, EventArgs e)
+        {
+            using (VENTASEntities bd = new VENTASEntities())
+            {
+                if (txtNombre.Text != "")
+                {
+                    var Revisar = from pro in bd.Productos
+                                  where pro.nombre_producto == txtNombre.Text
+                                  select pro;
+
+                    if (Revisar.Count() > 0)
+                    {
+                        txtNombre.Text = "";
+                        MessageBox.Show("Nombre de Producto existente\n" +
+                                        "  Intente otro por favor");
+                    }
+
+                }
+            }
+        }
     }
 }

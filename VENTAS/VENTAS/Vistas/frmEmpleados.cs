@@ -341,5 +341,27 @@ namespace VENTAS.Vistas
         {
             filtro();
         }
+
+        private void txtUsuario_Leave(object sender, EventArgs e)
+        {
+            using (VENTASEntities bd = new VENTASEntities())
+            {
+                if (txtUsuario.Text != "")
+                {
+                    var Revisar = from us in bd.Empleados
+                                  where us.usuario == txtUsuario.Text
+                                  select us;
+
+                    if (Revisar.Count() > 0)
+                    {
+                        txtUsuario.Text = "";
+                        MessageBox.Show("Nombre de Usuario existente\n" +
+                                        "  Intente otro por favor");
+                    }
+
+                }
+            }
+                        
+        }
     }
 }

@@ -80,7 +80,7 @@ namespace VENTAS.Vistas
             RetornarId();
             dgvDetalleCompra.Rows.Clear();
             lblTotal.Text = "";
-            MessageBox.Show("Venta Guardada con exito");
+            MessageBox.Show("Compra Guardada con exito");
         }
         public void listaCategorias()
         {
@@ -132,11 +132,6 @@ namespace VENTAS.Vistas
                 decimal subtotal = (cantidad * precio);
 
                 txtTotal.Text = Convert.ToString(subtotal);
-
-                //SubTotal = SubTotal + (decimal.Parse(txtTotal.Text));
-                //Total = SubTotal;
-
-                //lblTotal.Text = Total.ToString();
 
             }
             catch (Exception ex)
@@ -613,15 +608,17 @@ namespace VENTAS.Vistas
 
         private void pbCerrar_Click(object sender, EventArgs e)
         {
+            
             limpiarproducto();
             LimpiarProveedor();
             restaurarformulario();
             dgvDetalleCompra.Rows.Clear();
             dtpFecha.Text = "";
             lblTotal.Text = "";
-            FrmMeniu m = new FrmMeniu();
             this.Hide();
-            m.Show();
+            Log_in.m.Show();          
+            
+           
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
@@ -703,10 +700,14 @@ namespace VENTAS.Vistas
             {
                 Compra com = new Compra();
                 Proveedore prove = new Proveedore();
+                Empleado em = new Empleado();
 
                 if (dtpFecha.Text != "" )
                 {
-                    com.id_empleado = 1;                 
+                    em = bd.Empleados.Where(idBuscar => idBuscar.nombre_empleado == lblNombreCajero.Text).First();
+                    int idEmpleado = em.id_empleado;
+
+                    com.id_empleado = idEmpleado;                 
                     com.total_compra = Convert.ToDecimal(lblTotal.Text);
                     com.fecha = Convert.ToDateTime(dtpFecha.Text);
                     bd.Compras.Add(com);

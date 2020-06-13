@@ -32,22 +32,25 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buscarClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.agregarYModificarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.agregarYModificarCliente = new System.Windows.Forms.ToolStripMenuItem();
             this.proveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buscarProveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.agregarYEditarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.productosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.agregarYEditarProveedor = new System.Windows.Forms.ToolStripMenuItem();
+            this.productosPrincipal = new System.Windows.Forms.ToolStripMenuItem();
             this.verYModificarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.categoriasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inventarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verYBuscarProductosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.empleadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verYBuscarEmpleadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.agregarYModificarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.cargosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.agregarYModificarEmpleado = new System.Windows.Forms.ToolStripMenuItem();
+            this.cargosEmpleado = new System.Windows.Forms.ToolStripMenuItem();
             this.venderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ticketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.facturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ventasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.comprasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -67,7 +70,7 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.clientesToolStripMenuItem,
             this.proveedoresToolStripMenuItem,
-            this.productosToolStripMenuItem,
+            this.productosPrincipal,
             this.inventarioToolStripMenuItem,
             this.empleadosToolStripMenuItem,
             this.venderToolStripMenuItem});
@@ -82,7 +85,7 @@
             // 
             this.clientesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.buscarClienteToolStripMenuItem,
-            this.agregarYModificarToolStripMenuItem});
+            this.agregarYModificarCliente});
             this.clientesToolStripMenuItem.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clientesToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.clientesToolStripMenuItem.Image = global::VENTAS.Properties.Resources.cliente;
@@ -98,18 +101,18 @@
             this.buscarClienteToolStripMenuItem.Text = "Ver y Buscar Cliente";
             this.buscarClienteToolStripMenuItem.Click += new System.EventHandler(this.buscarClienteToolStripMenuItem_Click);
             // 
-            // agregarYModificarToolStripMenuItem
+            // agregarYModificarCliente
             // 
-            this.agregarYModificarToolStripMenuItem.Name = "agregarYModificarToolStripMenuItem";
-            this.agregarYModificarToolStripMenuItem.Size = new System.Drawing.Size(226, 24);
-            this.agregarYModificarToolStripMenuItem.Text = "Agregar y Modificar";
-            this.agregarYModificarToolStripMenuItem.Click += new System.EventHandler(this.agregarYModificarToolStripMenuItem_Click);
+            this.agregarYModificarCliente.Name = "agregarYModificarCliente";
+            this.agregarYModificarCliente.Size = new System.Drawing.Size(226, 24);
+            this.agregarYModificarCliente.Text = "Agregar y Modificar";
+            this.agregarYModificarCliente.Click += new System.EventHandler(this.agregarYModificarToolStripMenuItem_Click);
             // 
             // proveedoresToolStripMenuItem
             // 
             this.proveedoresToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.buscarProveedoresToolStripMenuItem,
-            this.agregarYEditarToolStripMenuItem});
+            this.agregarYEditarProveedor});
             this.proveedoresToolStripMenuItem.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.proveedoresToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.proveedoresToolStripMenuItem.Image = global::VENTAS.Properties.Resources.proveedor;
@@ -125,25 +128,25 @@
             this.buscarProveedoresToolStripMenuItem.Text = "Buscar Proveedores";
             this.buscarProveedoresToolStripMenuItem.Click += new System.EventHandler(this.buscarProveedoresToolStripMenuItem_Click);
             // 
-            // agregarYEditarToolStripMenuItem
+            // agregarYEditarProveedor
             // 
-            this.agregarYEditarToolStripMenuItem.Name = "agregarYEditarToolStripMenuItem";
-            this.agregarYEditarToolStripMenuItem.Size = new System.Drawing.Size(226, 24);
-            this.agregarYEditarToolStripMenuItem.Text = "Agregar y Modificar";
-            this.agregarYEditarToolStripMenuItem.Click += new System.EventHandler(this.agregarYEditarToolStripMenuItem_Click);
+            this.agregarYEditarProveedor.Name = "agregarYEditarProveedor";
+            this.agregarYEditarProveedor.Size = new System.Drawing.Size(226, 24);
+            this.agregarYEditarProveedor.Text = "Agregar y Modificar";
+            this.agregarYEditarProveedor.Click += new System.EventHandler(this.agregarYEditarToolStripMenuItem_Click);
             // 
-            // productosToolStripMenuItem
+            // productosPrincipal
             // 
-            this.productosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.productosPrincipal.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.verYModificarToolStripMenuItem,
             this.categoriasToolStripMenuItem});
-            this.productosToolStripMenuItem.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.productosToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.productosToolStripMenuItem.Image = global::VENTAS.Properties.Resources.producto;
-            this.productosToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.productosToolStripMenuItem.Name = "productosToolStripMenuItem";
-            this.productosToolStripMenuItem.Size = new System.Drawing.Size(127, 36);
-            this.productosToolStripMenuItem.Text = "Productos";
+            this.productosPrincipal.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.productosPrincipal.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.productosPrincipal.Image = global::VENTAS.Properties.Resources.producto;
+            this.productosPrincipal.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.productosPrincipal.Name = "productosPrincipal";
+            this.productosPrincipal.Size = new System.Drawing.Size(127, 36);
+            this.productosPrincipal.Text = "Productos";
             // 
             // verYModificarToolStripMenuItem
             // 
@@ -182,8 +185,8 @@
             // 
             this.empleadosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.verYBuscarEmpleadoToolStripMenuItem,
-            this.agregarYModificarToolStripMenuItem1,
-            this.cargosToolStripMenuItem});
+            this.agregarYModificarEmpleado,
+            this.cargosEmpleado});
             this.empleadosToolStripMenuItem.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.empleadosToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.empleadosToolStripMenuItem.Image = global::VENTAS.Properties.Resources.empleado;
@@ -199,25 +202,26 @@
             this.verYBuscarEmpleadoToolStripMenuItem.Text = "Ver y Buscar Empleados";
             this.verYBuscarEmpleadoToolStripMenuItem.Click += new System.EventHandler(this.verYBuscarEmpleadoToolStripMenuItem_Click);
             // 
-            // agregarYModificarToolStripMenuItem1
+            // agregarYModificarEmpleado
             // 
-            this.agregarYModificarToolStripMenuItem1.Name = "agregarYModificarToolStripMenuItem1";
-            this.agregarYModificarToolStripMenuItem1.Size = new System.Drawing.Size(253, 24);
-            this.agregarYModificarToolStripMenuItem1.Text = "Agregar y Modificar";
-            this.agregarYModificarToolStripMenuItem1.Click += new System.EventHandler(this.agregarYModificarToolStripMenuItem1_Click);
+            this.agregarYModificarEmpleado.Name = "agregarYModificarEmpleado";
+            this.agregarYModificarEmpleado.Size = new System.Drawing.Size(253, 24);
+            this.agregarYModificarEmpleado.Text = "Agregar y Modificar";
+            this.agregarYModificarEmpleado.Click += new System.EventHandler(this.agregarYModificarToolStripMenuItem1_Click);
             // 
-            // cargosToolStripMenuItem
+            // cargosEmpleado
             // 
-            this.cargosToolStripMenuItem.Name = "cargosToolStripMenuItem";
-            this.cargosToolStripMenuItem.Size = new System.Drawing.Size(253, 24);
-            this.cargosToolStripMenuItem.Text = "Cargos";
-            this.cargosToolStripMenuItem.Click += new System.EventHandler(this.cargosToolStripMenuItem_Click);
+            this.cargosEmpleado.Name = "cargosEmpleado";
+            this.cargosEmpleado.Size = new System.Drawing.Size(253, 24);
+            this.cargosEmpleado.Text = "Cargos";
+            this.cargosEmpleado.Click += new System.EventHandler(this.cargosToolStripMenuItem_Click);
             // 
             // venderToolStripMenuItem
             // 
             this.venderToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ticketToolStripMenuItem,
-            this.facturaToolStripMenuItem});
+            this.facturaToolStripMenuItem,
+            this.reportesToolStripMenuItem});
             this.venderToolStripMenuItem.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.venderToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.venderToolStripMenuItem.Image = global::VENTAS.Properties.Resources.dolar;
@@ -239,6 +243,29 @@
             this.facturaToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.facturaToolStripMenuItem.Text = "Comprar";
             this.facturaToolStripMenuItem.Click += new System.EventHandler(this.facturaToolStripMenuItem_Click);
+            // 
+            // reportesToolStripMenuItem
+            // 
+            this.reportesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ventasToolStripMenuItem,
+            this.comprasToolStripMenuItem});
+            this.reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
+            this.reportesToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.reportesToolStripMenuItem.Text = "Reportes";
+            // 
+            // ventasToolStripMenuItem
+            // 
+            this.ventasToolStripMenuItem.Name = "ventasToolStripMenuItem";
+            this.ventasToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.ventasToolStripMenuItem.Text = "Ventas";
+            this.ventasToolStripMenuItem.Click += new System.EventHandler(this.ventasToolStripMenuItem_Click);
+            // 
+            // comprasToolStripMenuItem
+            // 
+            this.comprasToolStripMenuItem.Name = "comprasToolStripMenuItem";
+            this.comprasToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.comprasToolStripMenuItem.Text = "Compras";
+            this.comprasToolStripMenuItem.Click += new System.EventHandler(this.comprasToolStripMenuItem_Click);
             // 
             // panel1
             // 
@@ -317,17 +344,13 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem buscarClienteToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem agregarYModificarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem proveedoresToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem buscarProveedoresToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem agregarYEditarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem productosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem verYModificarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem inventarioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem verYBuscarProductosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem empleadosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem verYBuscarEmpleadoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem agregarYModificarToolStripMenuItem1;
         public System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
@@ -335,7 +358,14 @@
         private System.Windows.Forms.ToolStripMenuItem ticketToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem facturaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem categoriasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cargosToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBox3;
+        public System.Windows.Forms.ToolStripMenuItem agregarYModificarCliente;
+        public System.Windows.Forms.ToolStripMenuItem agregarYEditarProveedor;
+        public System.Windows.Forms.ToolStripMenuItem productosPrincipal;
+        public System.Windows.Forms.ToolStripMenuItem agregarYModificarEmpleado;
+        public System.Windows.Forms.ToolStripMenuItem cargosEmpleado;
+        private System.Windows.Forms.ToolStripMenuItem reportesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ventasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem comprasToolStripMenuItem;
     }
 }
