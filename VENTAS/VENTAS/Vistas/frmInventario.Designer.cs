@@ -37,12 +37,6 @@
             this.dgvInventario = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.existencias = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PROVEEDOR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.costo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precioVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventario)).BeginInit();
             this.SuspendLayout();
             // 
@@ -89,13 +83,6 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvInventario.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvInventario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvInventario.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.nombre,
-            this.existencias,
-            this.categoria,
-            this.PROVEEDOR,
-            this.costo,
-            this.precioVenta});
             this.dgvInventario.Cursor = System.Windows.Forms.Cursors.Default;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.PaleTurquoise;
@@ -141,36 +128,6 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Inventario Actual";
             // 
-            // nombre
-            // 
-            this.nombre.HeaderText = "NOMBRE";
-            this.nombre.Name = "nombre";
-            // 
-            // existencias
-            // 
-            this.existencias.HeaderText = "EXISTENCIAS";
-            this.existencias.Name = "existencias";
-            // 
-            // categoria
-            // 
-            this.categoria.HeaderText = "CATEGORIA";
-            this.categoria.Name = "categoria";
-            // 
-            // PROVEEDOR
-            // 
-            this.PROVEEDOR.HeaderText = "PROVEEDOR";
-            this.PROVEEDOR.Name = "PROVEEDOR";
-            // 
-            // costo
-            // 
-            this.costo.HeaderText = "COSTO";
-            this.costo.Name = "costo";
-            // 
-            // precioVenta
-            // 
-            this.precioVenta.HeaderText = "PRECIO VENTA";
-            this.precioVenta.Name = "precioVenta";
-            // 
             // frmInventario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -198,11 +155,5 @@
         private System.Windows.Forms.DataGridView dgvInventario;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn existencias;
-        private System.Windows.Forms.DataGridViewTextBoxColumn categoria;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PROVEEDOR;
-        private System.Windows.Forms.DataGridViewTextBoxColumn costo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn precioVenta;
     }
 }

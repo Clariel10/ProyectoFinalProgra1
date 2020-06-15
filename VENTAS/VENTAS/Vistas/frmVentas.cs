@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using VENTAS.Model;
+using System.Drawing.Printing;
+using CrystalDecisions.CrystalReports.Engine;
 
 namespace VENTAS.Vistas
 {
@@ -16,15 +18,14 @@ namespace VENTAS.Vistas
     {
         public static Log_in log = new Log_in();
 
-        private decimal SubTotal = 0;
-        private decimal Total = 0;
+        string imagen = "Desktop\\venta";
         public frmVentas()
         {
             InitializeComponent();
             cbFactura.Checked = false;
             cbTickect.Checked = false;
-            
-           
+
+
         }
 
         void calculartotalfinal()
@@ -42,72 +43,72 @@ namespace VENTAS.Vistas
             }
         }
 
-        void evaluar()
+        void evaluacion()
         {
-            using (VENTASEntities bd = new VENTASEntities())
+            if (dgvDetalleVenta.Rows.Count == 0)
             {
-                Producto pro = new Producto();
-                int a = 0;
-
-                if (a == dgvDetalleVenta.RowCount)
+                calculo();
+                dgvDetalleVenta.Rows.Add(txtCodigoProducto.Text, txtNombreProducto.Text, txtPrecio.Text,
+                        txtCantidad.Text, txtTotal.Text);
+                calculartotalfinal();
+                limpiarproducto();
+            }
+            else if (dgvDetalleVenta.Rows.Count > 0)
+            {
+                calculo();
+                for (int i = 0; i < dgvDetalleVenta.RowCount; i++)
                 {
+                    int codigotxt = Convert.ToInt32(txtCodigoProducto.Text);
+                    string cod = dgvDetalleVenta.Rows[i].Cells[0].Value.ToString();
+                    int codigodgv = Convert.ToInt32(cod);
+                    
+                    if (i == dgvDetalleVenta.Rows.Count - 1 && codigodgv == codigotxt)
+                    {
+                        //DATOS CAJAS DE TEXTO
+                        int cantidad = Convert.ToInt32(txtCantidad.Text);
+
+                        double total = Convert.ToDouble(txtTotal.Text);
+
+                        //DATOS DARAGRIDVIEW
+                        string cantidadGrid = dgvDetalleVenta.Rows[i].Cells[3].Value.ToString();
+                        int cantidadGridConver = Convert.ToInt32(cantidadGrid);
+
+                        string precio = dgvDetalleVenta.Rows[i].Cells[2].Value.ToString();
+
+                        string totalGrid = dgvDetalleVenta.Rows[i].Cells[4].Value.ToString();
+                        double totalGridConvert = Convert.ToDouble(totalGrid);
+
+                        //OPERACIONES
+                        int suma = cantidad + cantidadGridConver;
+                        string sumacantidad = Convert.ToString(suma);
+
+                        double suma3 = total + totalGridConvert;
+                        string suma2Total = Convert.ToString(suma3);
+
+                        //ENVIANDO DATOS NUEVOS
+
+                        dgvDetalleVenta.Rows[i].Cells[3].Value = sumacantidad;
+
+                        dgvDetalleVenta.Rows[i].Cells[4].Value = suma2Total;
+
+                        calculartotalfinal();
+                        limpiarproducto();
+
+                        break;
+                    }
+                    else if (i == dgvDetalleVenta.Rows.Count - 1 && codigodgv != codigotxt)
+                    {
+                        calculo();
+                        dgvDetalleVenta.Rows.Add(txtCodigoProducto.Text, txtNombreProducto.Text, txtPrecio.Text,
+                                txtCantidad.Text, txtTotal.Text);
+                        calculartotalfinal();
+                        limpiarproducto();
+                        break;
+                    }
 
                 }
-                else if (a < dgvDetalleVenta.RowCount)
-                {
-                    for (int i = 0; i < dgvDetalleVenta.RowCount; i++)
-                    {
-                        string id = dgvDetalleVenta.Rows[i].Cells[0].Value.ToString();
-                        int idTabla = Convert.ToInt32(id);
-
-                        string nombreprod = dgvDetalleVenta.Rows[i].Cells[1].Value.ToString();
-
-                        int idDatos = Convert.ToInt32(txtCodigoProducto.Text);
-
-                        if (idTabla == idDatos)
-                        {
-
-                            //DATOS CAJAS DE TEXTO
-                            int cantidad = Convert.ToInt32(txtCantidad.Text);
-
-                            double total = Convert.ToDouble(txtTotal.Text);
-
-                            //DATOS DARAGRIDVIEW
-                            string cantidadGrid = dgvDetalleVenta.Rows[i].Cells[3].Value.ToString();
-                            int cantidadGridConver = Convert.ToInt32(cantidadGrid);
-
-                            string precio = dgvDetalleVenta.Rows[i].Cells[2].Value.ToString();
-
-                            string totalGrid = dgvDetalleVenta.Rows[i].Cells[4].Value.ToString();
-                            double totalGridConvert = Convert.ToDouble(totalGrid);
-
-                            //OPERACIONES
-                            int suma = cantidad + cantidadGridConver;
-                            string sumacantidad = Convert.ToString(suma);
-
-                            double suma3 = total + totalGridConvert;
-                            string suma2Total = Convert.ToString(suma3);
-
-                            //BORRANDO LA FILA DE DATOS
-
-                            //int ultimafila = dgvDetalleVenta.Rows.Count - 1;
-                            dgvDetalleVenta.Rows.RemoveAt(i);
-
-                            //ENVIANDO DATOS NUEVOS
-
-                            //dgvDetalleVenta.Rows[i].Cells[3].Value = sumacantidad;
-
-                            //dgvDetalleVenta.Rows[i].Cells[4].Value = suma2Total;
-
-                            dgvDetalleVenta.Rows.Add(id, nombreprod, precio, sumacantidad, suma2Total);
-
-
-                        }
-                        
-                    }
-                }               
             }
-        }
+        }    
 
         void RetornarId()
         {
@@ -121,10 +122,10 @@ namespace VENTAS.Vistas
                     string id = iteracion.id_venta.ToString();
                     int idConvertir = Convert.ToInt32(id);
                     int suma = idConvertir + 1;
-                   
+
                     lblIdVenta.Text = suma.ToString();
                 }
-            
+
             }
         }
 
@@ -138,7 +139,7 @@ namespace VENTAS.Vistas
                 decimal subtotal = (cantidad * precio);
 
                 txtTotal.Text = Convert.ToString(subtotal);
-                
+
 
             }
             catch (Exception ex)
@@ -163,13 +164,13 @@ namespace VENTAS.Vistas
             txtNombreProducto.Text = "";
             txtTotal.Text = "";
             txtPrecio.Text = "";
-            
+
         }
 
         private void frmVentas_Load(object sender, EventArgs e)
         {
             RetornarId();
-            
+
 
         }
 
@@ -194,7 +195,7 @@ namespace VENTAS.Vistas
 
         private void btnBuscarCliente_Click(object sender, EventArgs e)
         {
-            
+
             frmBuscarCliente bc = new frmBuscarCliente();
             bc.Show();
         }
@@ -208,12 +209,12 @@ namespace VENTAS.Vistas
                 Empleado em = new Empleado();
                 Cliente cli = new Cliente();
 
-                if(txtNombreCliente.Text != "" && txtApellidoCliente.Text != "" && txtTelefono.Text != "" && txtDUI.Text != "" && txtDireccion.Text != "")
-                    
+                if (txtNombreCliente.Text != "" && txtApellidoCliente.Text != "" && txtTelefono.Text != "" && txtDUI.Text != "" && txtDireccion.Text != "")
+
                 {
                     if (cbFactura.Checked == true && cbTickect.Checked == false)
                     {
-                                                
+
                         em = bd.Empleados.Where(idBuscar => idBuscar.nombre_empleado == lblNombreCajero.Text).First();
                         int idEmpleado = em.id_empleado;
 
@@ -254,7 +255,7 @@ namespace VENTAS.Vistas
 
                         string Cantidad = dgvDetalleVenta.Rows[i].Cells[3].Value.ToString();
                         int CantidadConvertido = Convert.ToInt32(Cantidad);
-                                                
+
                         string Total = dgvDetalleVenta.Rows[i].Cells[4].Value.ToString();
                         decimal TotalConvertido = Convert.ToDecimal(Total);
 
@@ -266,7 +267,7 @@ namespace VENTAS.Vistas
                         bd.Detalle_Venta.Add(dete);
                         bd.SaveChanges();
 
-                        
+
                     }
 
                     Producto pro = new Producto();
@@ -274,7 +275,7 @@ namespace VENTAS.Vistas
                     for (int i = 0; i < dgvDetalleVenta.RowCount; i++)
                     {
                         //OBTENIENDO DATOS
-                        
+
                         string idProducto = dgvDetalleVenta.Rows[i].Cells[0].Value.ToString();
                         int idConvertido = Convert.ToInt32(idProducto);
 
@@ -293,8 +294,16 @@ namespace VENTAS.Vistas
                         bd.SaveChanges();
                     }
 
+                    //IMPRIMIENDO FACTURA
 
-                    
+                    pdImprimir = new PrintDocument();
+                    PrinterSettings ps = new PrinterSettings();
+                    pdImprimir.PrinterSettings = ps;
+                    pdImprimir.PrintPage += Imprimir;
+                    pdImprimir.Print();
+
+
+
                     limpiarproducto();
                     LimpiarCliente();
                     dgvDetalleVenta.Rows.Clear();
@@ -333,32 +342,24 @@ namespace VENTAS.Vistas
                     }
                     else if (existencias >= cantidadCompra)
                     {
-
-                        calculo();
-                        //evaluar();
-                        dgvDetalleVenta.Rows.Add(txtCodigoProducto.Text, txtNombreProducto.Text, txtPrecio.Text,
-                                txtCantidad.Text, txtTotal.Text);
-
-                        calculartotalfinal();
-
+                        evaluacion();
                         dgvDetalleVenta.Refresh();
                         dgvDetalleVenta.ClearSelection();
                         int ultimafila = dgvDetalleVenta.Rows.Count - 1;
                         dgvDetalleVenta.FirstDisplayedScrollingRowIndex = ultimafila;
                         dgvDetalleVenta.Rows[ultimafila].Selected = true;
-                        limpiarproducto();
 
                     }
                 }
-            
+
                 else
                 {
                     MessageBox.Show("Datos vacios");
                 }
 
-                               
+
             }
-           
+
         }
 
         private void btnBuscarProdcuto_Click(object sender, EventArgs e)
@@ -369,7 +370,7 @@ namespace VENTAS.Vistas
 
         private void cbTickect_CheckedChanged(object sender, EventArgs e)
         {
-            if(cbTickect.CheckState == CheckState.Checked )
+            if (cbTickect.CheckState == CheckState.Checked)
             {
                 cbFactura.Checked = false;
                 txtApellidoCliente.Text = "Generico";
@@ -379,7 +380,7 @@ namespace VENTAS.Vistas
                 txtTelefono.Text = "0000-0000";
                 txtCodigoProducto.Focus();
                 btnBuscarCliente.Enabled = false;
-                
+
             }
             else if (cbTickect.CheckState == CheckState.Unchecked)
             {
@@ -409,7 +410,6 @@ namespace VENTAS.Vistas
             cbTickect.Checked = false;
             this.Hide();
             Log_in.m.Show();
-
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -457,7 +457,7 @@ namespace VENTAS.Vistas
                 if (intentos == 2)
                 {
                     btnAgregar.PerformClick();
-                    txtCodigoProducto.Text = "";                    
+                    txtCodigoProducto.Text = "";
                     txtNombreProducto.Text = "";
                     txtPrecio.Text = "";
                     txtTotal.Text = "";
@@ -516,7 +516,7 @@ namespace VENTAS.Vistas
 
         private void txtDireccion_KeyPress(object sender, KeyPressEventArgs e)
         {
-            
+
         }
 
         private void txtCodigoProducto_KeyPress(object sender, KeyPressEventArgs e)
@@ -537,6 +537,41 @@ namespace VENTAS.Vistas
             cn.Show();
         }
 
-        
+        private void Imprimir(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            //Image img = Image.FromFile();
+            Font font = new Font("Arial", 14);
+            Font font2 = new Font("Arial", 10);
+            int ancho = 1000;
+            int y = 20;
+
+            e.Graphics.DrawString("SISTEMA DE VENTA", font, Brushes.Black, new RectangleF(350, y += 50, ancho, 20));
+            e.Graphics.DrawString("Comprobante de pago", font2, Brushes.Black, new RectangleF(375, y += 20, ancho, 20));
+            //e.Graphics.DrawImage(img, new Rectangle(50, y += 20, 100,50));
+            e.Graphics.DrawString("                Comprobante #  " + lblIdVenta.Text, font, Brushes.Black, new RectangleF(20, y += 50, ancho, 20));
+            e.Graphics.DrawString("Fecha: " + dtpFecha.Text, font, Brushes.Black, new RectangleF(450, y + 30, ancho, 20));
+            e.Graphics.DrawString("                Cliente: " + txtNombreCliente.Text + " " + txtApellidoCliente.Text, font, Brushes.Black, new RectangleF(20, y += 30, ancho, 20));
+            e.Graphics.DrawString("                Cajero: " + lblNombreCajero.Text, font, Brushes.Black, new RectangleF(20, y += 30, ancho, 20));
+            y += 35;
+            e.Graphics.DrawString("                Producto" + "                      " + "Precio" + "                  " + "Cantidad" + "               " + "Total"
+                , font, Brushes.Black, new RectangleF(20, y += 35, ancho, 20));
+            y += 35;
+
+            for (int i = 0; i < dgvDetalleVenta.RowCount; i++)
+            {
+
+                e.Graphics.DrawString(dgvDetalleVenta.Rows[i].Cells[1].Value.ToString(), font, Brushes.Black, new RectangleF(110, y + 20, ancho, 20));
+                e.Graphics.DrawString("$ " + dgvDetalleVenta.Rows[i].Cells[2].Value.ToString(), font, Brushes.Black, new RectangleF(300, y + 20, ancho, 20));
+                e.Graphics.DrawString(dgvDetalleVenta.Rows[i].Cells[3].Value.ToString(), font, Brushes.Black, new RectangleF(490, y + 20, ancho, 20));
+                e.Graphics.DrawString("$ " + dgvDetalleVenta.Rows[i].Cells[4].Value.ToString(), font, Brushes.Black, new RectangleF(610, y + 20, ancho, 20));
+                y += 20;
+
+            }
+            y += 40;
+            e.Graphics.DrawString("Total:  $ " + lblTotal.Text, font, Brushes.Black, new RectangleF(120, y += 35, ancho, 20));
+            e.Graphics.DrawString("¡Gracias por tu compra!", font, Brushes.Black, new RectangleF(300, y += 55, ancho, 20));
+
+
+        }
     }
 }

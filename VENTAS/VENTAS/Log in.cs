@@ -34,9 +34,7 @@ namespace VENTAS
         {
             
 
-        }
-
-        
+        }             
 
         public static FrmMeniu m = new FrmMeniu();
 
@@ -77,6 +75,7 @@ namespace VENTAS
                         m.productosPrincipal.Visible = false;
                         m.agregarYModificarEmpleado.Enabled = false;
                         m.cargosEmpleado.Enabled = false;
+                        m.Reportes.Enabled = false;
                         m.ShowDialog();
                         this.Hide();
                     }

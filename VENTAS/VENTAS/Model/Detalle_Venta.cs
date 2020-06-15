@@ -17,9 +17,8 @@ namespace VENTAS.Model
         public int id_detalle_Venta { get; set; }
         public int id_venta { get; set; }
         public int id_producto { get; set; }
-        public Nullable<int> cantidad { get; set; }
-        public Nullable<decimal> precio { get; set; }
-    
+        public int cantidad { get; set; }
+        public decimal precio { get; set; }    
         public virtual Producto Producto { get; set; }
         public virtual Venta Venta { get; set; }
     }

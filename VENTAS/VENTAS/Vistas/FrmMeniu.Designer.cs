@@ -48,7 +48,7 @@
             this.venderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ticketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.facturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Reportes = new System.Windows.Forms.ToolStripMenuItem();
             this.ventasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.comprasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -77,7 +77,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(100, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.menuStrip1.Size = new System.Drawing.Size(936, 40);
+            this.menuStrip1.Size = new System.Drawing.Size(816, 40);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -221,7 +221,7 @@
             this.venderToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ticketToolStripMenuItem,
             this.facturaToolStripMenuItem,
-            this.reportesToolStripMenuItem});
+            this.Reportes});
             this.venderToolStripMenuItem.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.venderToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.venderToolStripMenuItem.Image = global::VENTAS.Properties.Resources.dolar;
@@ -244,14 +244,14 @@
             this.facturaToolStripMenuItem.Text = "Comprar";
             this.facturaToolStripMenuItem.Click += new System.EventHandler(this.facturaToolStripMenuItem_Click);
             // 
-            // reportesToolStripMenuItem
+            // Reportes
             // 
-            this.reportesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Reportes.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ventasToolStripMenuItem,
             this.comprasToolStripMenuItem});
-            this.reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
-            this.reportesToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
-            this.reportesToolStripMenuItem.Text = "Reportes";
+            this.Reportes.Name = "Reportes";
+            this.Reportes.Size = new System.Drawing.Size(180, 24);
+            this.Reportes.Text = "Reportes";
             // 
             // ventasToolStripMenuItem
             // 
@@ -364,8 +364,8 @@
         public System.Windows.Forms.ToolStripMenuItem productosPrincipal;
         public System.Windows.Forms.ToolStripMenuItem agregarYModificarEmpleado;
         public System.Windows.Forms.ToolStripMenuItem cargosEmpleado;
-        private System.Windows.Forms.ToolStripMenuItem reportesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ventasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem comprasToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem Reportes;
     }
 }

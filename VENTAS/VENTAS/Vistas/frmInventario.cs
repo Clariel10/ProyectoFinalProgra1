@@ -18,7 +18,7 @@ namespace VENTAS.Vistas
             InitializeComponent();
         }
 
-        void filtro2()
+        void filtro()
         {
            using (VENTASEntities bd = new VENTASEntities())
             {
@@ -29,41 +29,22 @@ namespace VENTAS.Vistas
                             where pro.id_categoria == cat.id_categoria
                             where pro.id_proveedor == prov.id_proveedor
                             where pro.nombre_producto.Contains(nombre)
-                            select pro;
 
+                            select new
+                            {
+                                NOMBRE = pro.nombre_producto,
+                                EXISTENCIAS = pro.cantidad,
+                                CATEGORIA = cat.nombre_categoria,
+                                PROVEEDOR = prov.nombre_proveedor,
+                                COSTO = pro.costo,
+                                PRECIO_VENTA = pro.precio_venta
 
-                foreach (var iteracion in lista)
-                {
-                    dgvInventario.Rows.Add(iteracion.nombre_producto,iteracion.cantidad,iteracion.Categoria.nombre_categoria, iteracion.Proveedore.nombre_proveedor,
-                        iteracion.costo, iteracion.precio_venta);
-                }
+                            };
 
-            }
-        }
-
-        void filtro()
-        {
-
-            using (VENTASEntities bd = new VENTASEntities())
-            {
-                string nombre = txtBuscar.Text;
-                var lista = from pro in bd.Productos
-                            from cat in bd.Categorias
-                            from prov in bd.Proveedores
-                            where pro.id_categoria == cat.id_categoria
-                            where pro.id_proveedor == prov.id_proveedor
-                            where pro.nombre_producto.Contains(nombre)
-                            select pro;
-
-
-                foreach (var iteracion in lista)
-                {
-                    dgvInventario.Rows.Add(iteracion.nombre_producto,iteracion.cantidad,iteracion.Categoria.nombre_categoria, iteracion.Proveedore.nombre_proveedor,
-                        iteracion.costo, iteracion.precio_venta);
-                }
+                dgvInventario.DataSource = lista.ToList();
 
             }
-        }
+        }        
 
         private void Inventario_Load(object sender, EventArgs e)
         {
@@ -78,12 +59,12 @@ namespace VENTAS.Vistas
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
-            filtro2();
+            filtro();
         }
 
         private void dgvInventario_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if(this.dgvInventario.Columns[e.ColumnIndex].Name == "existencias")
+            if(this.dgvInventario.Columns[e.ColumnIndex].Index == 1)
             {
                 if (Convert.ToInt32(e.Value) <= 149 )
                 {
