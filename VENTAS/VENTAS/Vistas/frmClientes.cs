@@ -257,12 +257,21 @@ namespace VENTAS.Vistas
             {
                 using (VENTASEntities bd = new VENTASEntities())
                 {
-                    Cliente cli = new Cliente();
-                    string id = dgvClientes.CurrentRow.Cells[0].Value.ToString();
-                    int id2 = int.Parse(id);
-                    cli = bd.Clientes.Where(verificarId => verificarId.id_cliente == id2).First();
-                    bd.Entry(cli).State = System.Data.Entity.EntityState.Deleted;
-                    bd.SaveChanges();
+                    try
+                    {
+                        Cliente cli = new Cliente();
+                        string id = dgvClientes.CurrentRow.Cells[0].Value.ToString();
+                        int id2 = int.Parse(id);
+                        cli = bd.Clientes.Where(verificarId => verificarId.id_cliente == id2).First();
+                        bd.Entry(cli).State = System.Data.Entity.EntityState.Deleted;
+                        bd.SaveChanges();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("  Este Cliente esta relacionado a un \n" +
+                                        "registro de venta, no se puede eliminar");
+                    }
+                    
 
                 }
             }

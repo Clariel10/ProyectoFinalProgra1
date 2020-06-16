@@ -251,6 +251,7 @@ namespace VENTAS.Vistas
                         pro.precio_venta = decimal.Parse(txtVenta.Text);
                         bd.Entry(pro).State = System.Data.Entity.EntityState.Modified;
                         bd.SaveChanges();
+                        listaProveedores();
                     }
                 }
                 else if (cmbCategoria.Text == "" && cmbProveedor.Text != "")
@@ -268,6 +269,7 @@ namespace VENTAS.Vistas
                         pro.precio_venta = decimal.Parse(txtVenta.Text);
                         bd.Entry(pro).State = System.Data.Entity.EntityState.Modified;
                         bd.SaveChanges();
+                        listaProveedores();
                     }
                 }
                 else if (cmbCategoria.Text == "" && cmbProveedor.Text == "")
@@ -284,6 +286,7 @@ namespace VENTAS.Vistas
                         pro.precio_venta = decimal.Parse(txtVenta.Text);
                         bd.Entry(pro).State = System.Data.Entity.EntityState.Modified;
                         bd.SaveChanges();
+                        listaProveedores();
                     }
                 }
                 else if (cmbCategoria.Text != "" && cmbProveedor.Text != "")
@@ -302,6 +305,7 @@ namespace VENTAS.Vistas
                         pro.precio_venta = decimal.Parse(txtVenta.Text);
                         bd.Entry(pro).State = System.Data.Entity.EntityState.Modified;
                         bd.SaveChanges();
+                        listaProveedores();
                     }
                 }
                
@@ -321,13 +325,23 @@ namespace VENTAS.Vistas
             {
                 using (VENTASEntities bd = new VENTASEntities())
                 {
-                    Producto pro = new Producto();
-                   
-                    string id = dgvProductos.CurrentRow.Cells[0].Value.ToString();
-                    int id2 = int.Parse(id);
-                    pro = bd.Productos.Where(verificarId => verificarId.id_producto == id2).First();
-                    bd.Entry(pro).State = System.Data.Entity.EntityState.Deleted;
-                    bd.SaveChanges();
+                    try
+                    {
+                        Producto pro = new Producto();
+
+                        string id = dgvProductos.CurrentRow.Cells[0].Value.ToString();
+                        int id2 = int.Parse(id);
+                        pro = bd.Productos.Where(verificarId => verificarId.id_producto == id2).First();
+                        bd.Entry(pro).State = System.Data.Entity.EntityState.Deleted;
+                        bd.SaveChanges();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Este Producto esta relacionado a un \n" +
+                                        "   registro de venta o de compra,\n" +
+                                        "        no se puede eliminar");
+                    }
+                    
                 }
             }
             else

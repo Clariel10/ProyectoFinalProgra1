@@ -158,6 +158,7 @@ namespace VENTAS.Vistas
                     em.usuario = txtUsuario.Text;
                     bd.Empleados.Add(em);
                     bd.SaveChanges();
+                    listaCargos();
 
                 }
             }
@@ -191,6 +192,7 @@ namespace VENTAS.Vistas
                         em.usuario = txtUsuario.Text;
                         bd.Entry(em).State = System.Data.Entity.EntityState.Modified;
                         bd.SaveChanges();
+                        listaCargos();
                     }
                 }
                 else if (cmbCargos.Text == "")
@@ -207,6 +209,7 @@ namespace VENTAS.Vistas
                         em.usuario = txtUsuario.Text;
                         bd.Entry(em).State = System.Data.Entity.EntityState.Modified;
                         bd.SaveChanges();
+                        listaCargos();
                     }
                 }
                 
@@ -227,12 +230,22 @@ namespace VENTAS.Vistas
             {
                 using (VENTASEntities bd = new VENTASEntities())
                 {
-                    Empleado em = new Empleado();
-                    string id = dgvEmpleados.CurrentRow.Cells[0].Value.ToString();
-                    int id2 = int.Parse(id);
-                    em = bd.Empleados.Where(verificarId => verificarId.id_empleado == id2).First();
-                    bd.Entry(em).State = System.Data.Entity.EntityState.Deleted;
-                    bd.SaveChanges();
+                    try
+                    {
+                        Empleado em = new Empleado();
+                        string id = dgvEmpleados.CurrentRow.Cells[0].Value.ToString();
+                        int id2 = int.Parse(id);
+                        em = bd.Empleados.Where(verificarId => verificarId.id_empleado == id2).First();
+                        bd.Entry(em).State = System.Data.Entity.EntityState.Deleted;
+                        bd.SaveChanges();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Este Empleado esta relacionado a un \n" +
+                                        "   registro de venta o de compra,\n" +
+                                        "        no se puede eliminar");
+                    }
+                   
                 }
             }
             else
